@@ -52,10 +52,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-Pz-NK4">
-                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x5M-Zb-hZs">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -76,6 +72,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-Pz-NK4">
+                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oqB-IR-VDg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -93,7 +93,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xwJ-6C-Yzy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-250" y="373"/>
+            <point key="canvasLocation" x="-341" y="373"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zrH-hG-1lE">
+            <objects>
+                <navigationController id="TsX-pT-tka" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rVn-aK-SiJ">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ZzP-Z7-IXT" kind="relationship" relationship="rootViewController" id="CZ2-M8-sMC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ne-xb-7Id" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1240" y="1123"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="eLy-Qf-fIZ">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="ZzP-Z7-IXT" customClass="SearchViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iRy-wQ-74r">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlE-C7-NDg">
+                                <rect key="frame" x="0.0" y="103" width="377" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wQr-ew-Fm4">
+                                <rect key="frame" x="0.0" y="132" width="377" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ZzP-Z7-IXT" id="Y5m-Hb-dSM"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qz5-Xa-7UG">
+                                <rect key="frame" x="0.0" y="196" width="393" height="622"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AYX-SW-iWV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rlE-C7-NDg" firstAttribute="top" secondItem="AYX-SW-iWV" secondAttribute="top" id="3Jp-5N-bDo"/>
+                            <constraint firstItem="qz5-Xa-7UG" firstAttribute="leading" secondItem="AYX-SW-iWV" secondAttribute="leading" id="HYg-vO-4YY"/>
+                            <constraint firstItem="qz5-Xa-7UG" firstAttribute="bottom" secondItem="AYX-SW-iWV" secondAttribute="bottom" id="Osp-9Y-pvF"/>
+                            <constraint firstItem="qz5-Xa-7UG" firstAttribute="top" secondItem="wQr-ew-Fm4" secondAttribute="bottom" constant="8" id="V2H-cv-5t6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rlE-C7-NDg" secondAttribute="trailing" id="bFD-eI-tNo"/>
+                            <constraint firstItem="rlE-C7-NDg" firstAttribute="leading" secondItem="AYX-SW-iWV" secondAttribute="leading" id="ivO-GT-0T4"/>
+                            <constraint firstItem="qz5-Xa-7UG" firstAttribute="trailing" secondItem="AYX-SW-iWV" secondAttribute="trailing" id="mA6-Zd-Twb"/>
+                            <constraint firstItem="wQr-ew-Fm4" firstAttribute="top" secondItem="rlE-C7-NDg" secondAttribute="bottom" constant="8" id="rKx-aa-45C"/>
+                            <constraint firstItem="wQr-ew-Fm4" firstAttribute="leading" secondItem="AYX-SW-iWV" secondAttribute="leading" id="uCO-Zt-J63"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wQr-ew-Fm4" secondAttribute="trailing" id="uyw-Lh-sG9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="l75-aw-ghN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DsQ-4J-KNR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-341.2213740458015" y="1122.5352112676057"/>
         </scene>
         <!--Books-->
         <scene sceneID="guG-sW-waK">
@@ -120,10 +183,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="AKf-7b-93v">
-                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ywb-fW-i1G">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -138,6 +197,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="AKf-7b-93v">
+                                <rect key="frame" x="186" y="416" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -156,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-292" y="-370"/>
+            <point key="canvasLocation" x="-341" y="-370"/>
         </scene>
     </scenes>
     <resources>

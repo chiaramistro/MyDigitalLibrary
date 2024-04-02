@@ -42,10 +42,14 @@ class BooksTabViewController: UIViewController, UITableViewDataSource {
     
     func setLoading(isLoading: Bool) {
         isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        navigationItem.rightBarButtonItem?.isEnabled = !isLoading
     }
     
     @objc func addBook() {
         print("addBook()")
+        let searchController = self.storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        searchController.type = "book"
+       self.navigationController?.pushViewController(searchController, animated: true)
     }
 
 
