@@ -1,13 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gmk-Be-eqK">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="n7f-fz-3J8">
+            <objects>
+                <tabBarController id="gmk-Be-eqK" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b45-Qh-MfR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="QY7-cS-AVU" kind="relationship" relationship="viewControllers" id="A0G-M4-yIz"/>
+                        <segue destination="k6j-dZ-e4O" kind="relationship" relationship="viewControllers" id="kD3-ZW-dqO"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eay-AP-dwB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2054" y="75"/>
+        </scene>
+        <!--Authors-->
+        <scene sceneID="bnb-PD-lxS">
+            <objects>
+                <navigationController id="k6j-dZ-e4O" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Authors" image="pencil.tip" catalog="system" id="NT3-Qr-EIb"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1hW-S4-fZ3">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Bce-gk-XKh" kind="relationship" relationship="rootViewController" id="i9y-Wp-dVt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpu-Zh-P5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1240" y="373"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="Zt8-F8-4RC">
+            <objects>
+                <collectionViewController id="Bce-gk-XKh" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Jyu-YB-Wg3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="12k-X0-hLy">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IEP-Zz-qcw">
+                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HEJ-PX-pXQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionViewCellContentView>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Bce-gk-XKh" id="4eP-z1-qHM"/>
+                            <outlet property="delegate" destination="Bce-gk-XKh" id="5e6-iz-fhX"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="wSs-Yl-e82"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1n4-wz-wGU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-292" y="373"/>
+        </scene>
+        <!--Books-->
+        <scene sceneID="guG-sW-waK">
+            <objects>
+                <navigationController id="QY7-cS-AVU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Books" image="book" catalog="system" id="ImK-fn-CKR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SMR-1B-klO">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Apa-6z-sQ5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9E-EF-QMg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1239" y="-370"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -16,14 +104,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Digital Library" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lV-R9-R4r">
-                                <rect key="frame" x="117.00000000000001" y="75" width="159.33333333333337" height="25.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ywb-fW-i1G">
-                                <rect key="frame" x="0.0" y="118.33333333333331" width="393" height="733.66666666666674"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" id="cvi-d6-3rz">
@@ -40,24 +122,25 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ywb-fW-i1G" firstAttribute="top" secondItem="6lV-R9-R4r" secondAttribute="bottom" constant="18" id="cad-GB-9zD"/>
+                            <constraint firstItem="Ywb-fW-i1G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BbD-S3-dAk"/>
                             <constraint firstAttribute="bottom" secondItem="Ywb-fW-i1G" secondAttribute="bottom" id="cp2-Vi-G2K"/>
                             <constraint firstItem="Ywb-fW-i1G" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gxo-XA-1lT"/>
-                            <constraint firstItem="6lV-R9-R4r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="gyy-rj-IP3"/>
                             <constraint firstItem="Ywb-fW-i1G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oNe-Bs-mUw"/>
-                            <constraint firstItem="6lV-R9-R4r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sLG-nv-4ou"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="X90-z0-Pu9"/>
                     <connections>
                         <outlet property="tableView" destination="Ywb-fW-i1G" id="dEa-HT-Zbj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113.74045801526717" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="-292" y="-370"/>
         </scene>
     </scenes>
     <resources>
+        <image name="book" catalog="system" width="128" height="99"/>
+        <image name="pencil.tip" catalog="system" width="99" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
