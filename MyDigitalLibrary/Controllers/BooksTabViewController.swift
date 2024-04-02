@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  BooksTabViewController.swift
 //  MyDigitalLibrary
 //
 //  Created by Chiara Mistrorigo on 02/04/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource {
+class BooksTabViewController: UIViewController, UITableViewDataSource {
     
     var books: [Book] = []
     
@@ -16,7 +16,10 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("HomeViewController viewDidLoad()")
+        print("BooksTabViewController viewDidLoad()")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBook))
+        navigationItem.title = "My Digital Library"
         
         self.tableView.dataSource = self
         
@@ -30,6 +33,10 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                 print("reloading data end...")            }
         }
         
+    }
+    
+    @objc func addBook() {
+        print("addBook()")
     }
 
 

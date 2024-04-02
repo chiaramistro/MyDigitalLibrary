@@ -1,5 +1,5 @@
 //
-//  HomeViewController+TableViewController.swift
+//  BooksTabViewController+TableViewController.swift
 //  MyDigitalLibrary
 //
 //  Created by Chiara Mistrorigo on 02/04/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension HomeViewController {
+extension BooksTabViewController {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("tableView numberOfRowsInSection: \(books.count)")

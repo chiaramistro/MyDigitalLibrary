@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="-1240" y="373"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Authors Collection View Controller-->
         <scene sceneID="Zt8-F8-4RC">
             <objects>
-                <collectionViewController id="Bce-gk-XKh" sceneMemberID="viewController">
+                <collectionViewController id="Bce-gk-XKh" customClass="AuthorsCollectionViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Jyu-YB-Wg3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="-1239" y="-370"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Books Tab View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BooksTabViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
