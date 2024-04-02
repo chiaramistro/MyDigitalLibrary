@@ -24,7 +24,7 @@ class AuthorsCollectionViewController: UIViewController {
     @objc func addAuthor() {
         print("addAuthor()")
         let searchController = self.storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        searchController.type = "author"
+        searchController.type = SearchEnum.author
        self.navigationController?.pushViewController(searchController, animated: true)
     }
 

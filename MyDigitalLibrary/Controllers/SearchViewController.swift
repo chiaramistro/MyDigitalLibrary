@@ -9,7 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    var type: String!
+    var type: SearchEnum!
     
     override func viewDidLoad() {
         print("SearchViewController viewDidLoad()")

@@ -48,7 +48,7 @@ class BooksTabViewController: UIViewController, UITableViewDataSource {
     @objc func addBook() {
         print("addBook()")
         let searchController = self.storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        searchController.type = "book"
+        searchController.type = SearchEnum.book
        self.navigationController?.pushViewController(searchController, animated: true)
     }
 
