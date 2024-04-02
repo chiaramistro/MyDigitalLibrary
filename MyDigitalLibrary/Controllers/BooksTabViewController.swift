@@ -13,6 +13,8 @@ class BooksTabViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -23,16 +25,23 @@ class BooksTabViewController: UIViewController, UITableViewDataSource {
         
         self.tableView.dataSource = self
         
+        setLoading(isLoading: true)
         OpenLibraryClient.searchBook(bookTitle: "lord+of+the+rings") { result, error in
             //print("searchBook() result: \(result)")
             print("searchBook() success")
             self.books = result
             DispatchQueue.main.async {
+                self.setLoading(isLoading: false)
                 print("reloading data start...")
                 self.tableView.reloadData()
-                print("reloading data end...")            }
+                print("reloading data end...")
+            }
         }
         
+    }
+    
+    func setLoading(isLoading: Bool) {
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
     
     @objc func addBook() {

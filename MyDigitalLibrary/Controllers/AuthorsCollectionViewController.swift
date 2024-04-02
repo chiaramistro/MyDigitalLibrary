@@ -7,7 +7,9 @@
 
 import UIKit
 
-class AuthorsCollectionViewController: UICollectionViewController {
+class AuthorsCollectionViewController: UIViewController {
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
