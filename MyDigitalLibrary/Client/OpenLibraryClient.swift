@@ -26,20 +26,22 @@ class OpenLibraryClient {
 
     }
     
-    class func searchBook(bookTitle: String, completion: @escaping ([Book], Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.searchBook(bookTitle).url, responseType: BookSearchResponse.self) { response, error in
+    class func searchBook(bookTitle: String, completion: @escaping ([BookResponse], Error?) -> Void) -> URLSessionDataTask  {
+        let query = bookTitle.lowercased().replacingOccurrences(of: " ", with: "+")
+        let task = taskForGETRequest(url: Endpoints.searchBook(query).url, responseType: BookSearchResponse.self) { response, error in
             if let response = response {
                 completion(response.docs, nil)
             } else {
                 completion([], error)
             }
         }
+        return task
     }
     
     
     // MARK: - Generic GET request method
 
-    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
         print(url)
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
@@ -60,5 +62,6 @@ class OpenLibraryClient {
         }
 
         task.resume()
+        return task
     }
 }

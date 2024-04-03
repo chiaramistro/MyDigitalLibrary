@@ -25,18 +25,6 @@ class BooksTabViewController: UIViewController, UITableViewDataSource {
         
         self.tableView.dataSource = self
         
-        setLoading(isLoading: true)
-        OpenLibraryClient.searchBook(bookTitle: "lord+of+the+rings") { result, error in
-            //print("searchBook() result: \(result)")
-            print("searchBook() success")
-            self.books = result
-            DispatchQueue.main.async {
-                self.setLoading(isLoading: false)
-                print("reloading data start...")
-                self.tableView.reloadData()
-                print("reloading data end...")
-            }
-        }
         
     }
     
