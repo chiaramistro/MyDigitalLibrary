@@ -173,6 +173,53 @@
             </objects>
             <point key="canvasLocation" x="-341.2213740458015" y="1122.5352112676057"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5N3-aE-0pP">
+            <objects>
+                <navigationController id="uUH-pS-3V7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mSc-BP-6eA">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5cN-yJ-7i3" kind="relationship" relationship="rootViewController" id="Tfb-0w-eUU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mdB-6q-fSE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1240" y="1811"/>
+        </scene>
+        <!--Search Result View Controller-->
+        <scene sceneID="qe9-Fn-K3p">
+            <objects>
+                <viewController storyboardIdentifier="SearchResultViewController" id="5cN-yJ-7i3" customClass="SearchResultViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U2n-yl-9LJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author/book" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjR-ae-JWX">
+                                <rect key="frame" x="149.66666666666666" y="415.66666666666669" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eHa-PC-MyA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HjR-ae-JWX" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="Tkk-dq-7NZ"/>
+                            <constraint firstItem="HjR-ae-JWX" firstAttribute="centerY" secondItem="U2n-yl-9LJ" secondAttribute="centerY" id="aVX-Ad-6ee"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zDV-ZY-jQc"/>
+                    <connections>
+                        <outlet property="textLabel" destination="HjR-ae-JWX" id="EfJ-av-lHg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uq1-5p-UhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-341" y="1811"/>
+        </scene>
         <!--Books-->
         <scene sceneID="guG-sW-waK">
             <objects>

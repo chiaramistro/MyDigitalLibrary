@@ -12,7 +12,7 @@ import UIKit
 //    var desc: String
 //}
 
-class SearchViewController: UIViewController, UITableViewDataSource {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var type: SearchEnum!
     
@@ -31,6 +31,7 @@ class SearchViewController: UIViewController, UITableViewDataSource {
         navigationItem.title = "Search"
         
         self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     func setLoading(isLoading: Bool) {
@@ -56,6 +57,14 @@ extension SearchViewController {
         cell.textLabel?.text = result
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tableView didSelectRowAt() \(indexPath)")
+        let searchResultController = self.storyboard!.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
+        searchResultController.result = searchResults[(indexPath as NSIndexPath).row]
+        self.navigationController?.pushViewController(searchResultController, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }
