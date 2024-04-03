@@ -95,7 +95,24 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchAuthors(searchText: String) {
         print("searchAuthors()")
-        // TODO implement search for authors
+        currentSearchTask = OpenLibraryClient.searchAuthor(authorName: searchText) { result, error in
+            print("searchAuthor() success")
+            if (result.isEmpty) {
+                // FIXME show empty state
+                return
+            }
+            
+            for entry in result {
+                self.searchResults.append(entry.name)
+            }
+            
+            DispatchQueue.main.async {
+                self.setLoading(isLoading: false)
+                print("reloading data start...")
+                self.tableView.reloadData()
+                print("reloading data end...")
+            }
+        }
     }
     
     func searchBooks(searchText: String) {

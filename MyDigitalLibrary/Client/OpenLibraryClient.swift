@@ -13,10 +13,12 @@ class OpenLibraryClient {
         static let base = "https://openlibrary.org/"
         
         case searchBook(String)
+        case searchAuthor(String)
         
         var stringValue: String {
             switch self {
                 case .searchBook(let title): return Endpoints.base + "search.json" + "?q=\(title)"
+                case .searchAuthor(let name): return Endpoints.base + "search/authors.json" + "?q=\(name)"
             }
         }
         
@@ -38,6 +40,17 @@ class OpenLibraryClient {
         return task
     }
     
+    class func searchAuthor(authorName: String, completion: @escaping ([AuthorBookResponse], Error?) -> Void) -> URLSessionDataTask  {
+        let query = authorName.lowercased().replacingOccurrences(of: " ", with: "+")
+        let task = taskForGETRequest(url: Endpoints.searchAuthor(query).url, responseType: AuthorSearchResponse.self) { response, error in
+            if let response = response {
+                completion(response.docs, nil)
+            } else {
+                completion([], error)
+            }
+        }
+        return task
+    }
     
     // MARK: - Generic GET request method
 
