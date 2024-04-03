@@ -197,8 +197,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author/book" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjR-ae-JWX">
-                                <rect key="frame" x="149.66666666666666" y="415.66666666666669" width="94" height="21"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Efr-IK-1Aa">
+                                <rect key="frame" x="8" y="111" width="377" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="hfY-eG-DzQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nq3-0p-8yz">
+                                <rect key="frame" x="8" y="419" width="377" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -207,18 +213,23 @@
                         <viewLayoutGuide key="safeArea" id="eHa-PC-MyA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HjR-ae-JWX" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="Tkk-dq-7NZ"/>
-                            <constraint firstItem="HjR-ae-JWX" firstAttribute="centerY" secondItem="U2n-yl-9LJ" secondAttribute="centerY" id="aVX-Ad-6ee"/>
+                            <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="Efr-IK-1Aa" secondAttribute="trailing" constant="8" id="6uj-v2-iZa"/>
+                            <constraint firstItem="Efr-IK-1Aa" firstAttribute="top" secondItem="eHa-PC-MyA" secondAttribute="top" constant="8" id="Qlb-Pj-KNH"/>
+                            <constraint firstItem="Efr-IK-1Aa" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="Wz4-9U-iaX"/>
+                            <constraint firstItem="nq3-0p-8yz" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="8" id="lQ2-pX-hlu"/>
+                            <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="nq3-0p-8yz" secondAttribute="trailing" constant="8" id="tSM-Nu-KrC"/>
+                            <constraint firstItem="nq3-0p-8yz" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="wRw-3T-GbE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zDV-ZY-jQc"/>
                     <connections>
-                        <outlet property="textLabel" destination="HjR-ae-JWX" id="EfJ-av-lHg"/>
+                        <outlet property="descriptionLabel" destination="nq3-0p-8yz" id="66b-tp-ecK"/>
+                        <outlet property="imageView" destination="Efr-IK-1Aa" id="Iid-oP-EWX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uq1-5p-UhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-341" y="1811"/>
+            <point key="canvasLocation" x="-341.2213740458015" y="1810.5633802816903"/>
         </scene>
         <!--Books-->
         <scene sceneID="guG-sW-waK">

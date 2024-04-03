@@ -62,7 +62,9 @@ extension SearchViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tableView didSelectRowAt() \(indexPath)")
         let searchResultController = self.storyboard!.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
-        searchResultController.result = searchResults[(indexPath as NSIndexPath).row]
+        searchResultController.id = "0385472579" // FIXME
+        searchResultController.titleText = searchResults[(indexPath as NSIndexPath).row]
+        searchResultController.descriptionText = "My description" // FIXME
         self.navigationController?.pushViewController(searchResultController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
