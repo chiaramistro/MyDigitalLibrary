@@ -14,11 +14,13 @@ class OpenLibraryClient {
         
         case searchBook(String)
         case searchAuthor(String)
+        case bookCover(String)
         
         var stringValue: String {
             switch self {
                 case .searchBook(let title): return Endpoints.base + "search.json" + "?q=\(title)"
                 case .searchAuthor(let name): return Endpoints.base + "search/authors.json" + "?q=\(name)"
+                case .bookCover(let id): return "https://covers.openlibrary.org/b/isbn/\(id)-M.jpg"
             }
         }
         
@@ -27,6 +29,21 @@ class OpenLibraryClient {
         }
 
     }
+    
+    class func getBookCoverImage(id: String, completion: @escaping (Data?, Error?) -> Void) {
+        let download = URLSession.shared.dataTask(with: Endpoints.bookCover(id).url) { data, response, error in
+             if let data = data {
+                 DispatchQueue.main.async {
+                     completion(data, nil)
+                 }
+             } else {
+                 DispatchQueue.main.async {
+                    completion(nil, error)
+                 }
+             }
+         }
+         download.resume()
+     }
     
     class func searchBook(bookTitle: String, completion: @escaping ([BookResponse], Error?) -> Void) -> URLSessionDataTask  {
         let query = bookTitle.lowercased().replacingOccurrences(of: " ", with: "+")
@@ -59,7 +76,9 @@ class OpenLibraryClient {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 print("Data not valid")
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
                 return
             }
             //let json = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
@@ -67,10 +86,14 @@ class OpenLibraryClient {
             let decoder = JSONDecoder()
             do {
                 let response = try decoder.decode(responseType, from: data)
-                completion(response, nil)
+                DispatchQueue.main.async {
+                    completion(response, nil)
+                }
             } catch {
                 print("Parsing not valid")
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
             }
         }
 
