@@ -60,7 +60,7 @@ class LibraryDetailsViewController: UIViewController {
         
         imageActivityIndicator.startAnimating()
         imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
-        OpenLibraryClient.getBookCoverImage(id: imageId) { image, error in
+        OpenLibraryClient.getCoverImage(id: imageId, type: type) { image, error in
             if let image = image {
                 print("getBookCoverImage() success \(image)")
                 self.imageActivityIndicator.stopAnimating()
@@ -83,13 +83,4 @@ class LibraryDetailsViewController: UIViewController {
         print("onAddAuthorToFavorites()")
     }
     
-//    @IBAction func onAddToFavourites(_ sender: Any) {
-//        print("onAddToFavourites()")
-////        // FIXME add type to save authors
-////        let book = Book(context: dataController.viewContext)
-////        book.title = result
-////        // FIXME add author too
-////        try? dataController.viewContext.save()
-////        debugPrint("New book saved successfully")
-//    }
 }

@@ -14,7 +14,7 @@ class OpenLibraryClient {
         
         case searchBook(String)
         case searchAuthor(String)
-        case bookCover(String)
+        case cover(String, SearchEnum)
         case works(String)
         case authorDetails(String)
         
@@ -22,7 +22,7 @@ class OpenLibraryClient {
             switch self {
                 case .searchBook(let title): return Endpoints.base + "/search.json" + "?q=\(title)"
                 case .searchAuthor(let name): return Endpoints.base + "/search/authors.json" + "?q=\(name)"
-                case .bookCover(let id): return "https://covers.openlibrary.org/b/olid/\(id)-M.jpg"
+                case .cover(let id, let type): return "https://covers.openlibrary.org/\(getType(type: type))/olid/\(id)-M.jpg"
                 case .works(let workId): return Endpoints.base + "\(workId).json"
                 case .authorDetails(let authorId): return Endpoints.base + "/authors/\(authorId).json"
             }
@@ -30,6 +30,17 @@ class OpenLibraryClient {
         
         var url: URL {
             return URL(string: stringValue)!
+        }
+        
+        func getType(type: SearchEnum) -> String {
+            switch (type) {
+            case SearchEnum.book:
+                return "b"
+            case SearchEnum.author:
+                return "a"
+            default:
+                return ""
+            }
         }
 
     }
@@ -56,8 +67,8 @@ class OpenLibraryClient {
         return task
     }
         
-    class func getBookCoverImage(id: String, completion: @escaping (Data?, Error?) -> Void) {
-        let download = URLSession.shared.dataTask(with: Endpoints.bookCover(id).url) { data, response, error in
+    class func getCoverImage(id: String, type: SearchEnum, completion: @escaping (Data?, Error?) -> Void) {
+        let download = URLSession.shared.dataTask(with: Endpoints.cover(id, type).url) { data, response, error in
              if let data = data {
                  DispatchQueue.main.async {
                      completion(data, nil)
