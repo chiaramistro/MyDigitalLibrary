@@ -27,14 +27,14 @@ extension BooksTabViewController {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let searchResultController = self.storyboard!.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
+        let detailsController = self.storyboard!.instantiateViewController(withIdentifier: "LibraryDetailsViewController") as! LibraryDetailsViewController
         let book = books[(indexPath as NSIndexPath).row]
-        searchResultController.key = book.key
-        searchResultController.imageId = book.imageId
-        searchResultController.titleText = book.title
-        searchResultController.descriptionText = book.description
-        searchResultController.type = SearchEnum.book
-        self.navigationController?.pushViewController(searchResultController, animated: true)
+        detailsController.key = book.key
+        detailsController.imageId = book.imageId
+        detailsController.titleText = book.title
+        detailsController.descriptionText = book.description
+        detailsController.type = SearchEnum.book
+        self.navigationController?.pushViewController(detailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

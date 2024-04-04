@@ -222,10 +222,10 @@
             </objects>
             <point key="canvasLocation" x="-1240" y="1811"/>
         </scene>
-        <!--Search Result View Controller-->
+        <!--Library Details View Controller-->
         <scene sceneID="qe9-Fn-K3p">
             <objects>
-                <viewController storyboardIdentifier="SearchResultViewController" id="5cN-yJ-7i3" customClass="SearchResultViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LibraryDetailsViewController" id="5cN-yJ-7i3" customClass="LibraryDetailsViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U2n-yl-9LJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

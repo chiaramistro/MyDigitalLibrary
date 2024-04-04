@@ -28,14 +28,14 @@ extension SearchViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tableView didSelectRowAt() \(indexPath)")
-        let searchResultController = self.storyboard!.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
+        let detailsController = self.storyboard!.instantiateViewController(withIdentifier: "LibraryDetailsViewController") as! LibraryDetailsViewController
         let searchItem = searchResults[(indexPath as NSIndexPath).row]
-        searchResultController.key = searchItem.key
-        searchResultController.imageId = searchItem.imageId
-        searchResultController.titleText = searchItem.title
-        searchResultController.descriptionText = searchItem.description
-        searchResultController.type = type
-        self.navigationController?.pushViewController(searchResultController, animated: true)
+        detailsController.key = searchItem.key
+        detailsController.imageId = searchItem.imageId
+        detailsController.titleText = searchItem.title
+        detailsController.descriptionText = searchItem.description
+        detailsController.type = type
+        self.navigationController?.pushViewController(detailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 

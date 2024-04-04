@@ -1,5 +1,5 @@
 //
-//  SearchResultViewController.swift
+//  LibraryDetailsViewController.swift
 //  MyDigitalLibrary
 //
 //  Created by Chiara Mistrorigo on 03/04/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchResultViewController: UIViewController {
+class LibraryDetailsViewController: UIViewController {
     
     var imageId: String!
     var key: String!
@@ -15,13 +15,15 @@ class SearchResultViewController: UIViewController {
     var descriptionText: String!
     var type: SearchEnum!
     
+    // FIXME add activity loading
+    
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var addBookToFavoritesButton: UIButton!
     
     override func viewDidLoad() {
-        print("SearchResultViewController viewDidLoad()")
+        print("LibraryDetailsViewController viewDidLoad()")
         
         navigationItem.title = titleText
         descriptionLabel.text = "..."
@@ -72,4 +74,13 @@ class SearchResultViewController: UIViewController {
         print("onAddAuthorToFavorites()")
     }
     
+//    @IBAction func onAddToFavourites(_ sender: Any) {
+//        print("onAddToFavourites()")
+////        // FIXME add type to save authors
+////        let book = Book(context: dataController.viewContext)
+////        book.title = result
+////        // FIXME add author too
+////        try? dataController.viewContext.save()
+////        debugPrint("New book saved successfully")
+//    }
 }

@@ -24,14 +24,14 @@ extension AuthorsCollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("collectionView select() \(indexPath)")
-        let searchResultController = self.storyboard!.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
+        let detailsController = self.storyboard!.instantiateViewController(withIdentifier: "LibraryDetailsViewController") as! LibraryDetailsViewController
         let author = authors[(indexPath as NSIndexPath).row]
-        searchResultController.key = author.key
-        searchResultController.imageId = author.imageId
-        searchResultController.titleText = author.title
-        searchResultController.descriptionText = author.description
-        searchResultController.type = SearchEnum.author
-        self.navigationController?.pushViewController(searchResultController, animated: true)
+        detailsController.key = author.key
+        detailsController.imageId = author.imageId
+        detailsController.titleText = author.title
+        detailsController.descriptionText = author.description
+        detailsController.type = SearchEnum.author
+        self.navigationController?.pushViewController(detailsController, animated: true)
     }
     
 }
