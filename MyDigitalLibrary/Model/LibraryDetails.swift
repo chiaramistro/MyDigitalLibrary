@@ -8,7 +8,8 @@
 import Foundation
 
 struct LibraryDetails {
-    let id: String
+    let imageId: String
+    let key: String
     let title: String
     let description: String
 }

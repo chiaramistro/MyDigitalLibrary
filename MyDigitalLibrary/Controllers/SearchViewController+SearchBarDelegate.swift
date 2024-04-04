@@ -40,8 +40,8 @@ extension SearchViewController: UISearchBarDelegate {
                 return
             }
             
-            for entry in result {
-                self.searchResults.append(LibraryDetails(id: entry.key, title: entry.name, description: entry.name))
+            for author in result {
+                self.searchResults.append(LibraryDetails(imageId: author.key, key: author.key, title: author.name, description: author.name))
             }
             
             DispatchQueue.main.async {
@@ -63,8 +63,8 @@ extension SearchViewController: UISearchBarDelegate {
                 return
             }
             
-            for entry in result {
-                self.searchResults.append(LibraryDetails(id: (entry.coverEditionKey ?? entry.editionKey?[0]) ?? "", title: entry.title, description: entry.title))
+            for book in result {
+                self.searchResults.append(LibraryDetails(imageId: (book.coverEditionKey ?? book.editionKey?[0]) ?? "", key: book.key, title: book.title, description: book.title))
             }
             
             DispatchQueue.main.async {

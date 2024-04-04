@@ -9,7 +9,8 @@ import UIKit
 
 class SearchResultViewController: UIViewController {
     
-    var id: String!
+    var imageId: String!
+    var key: String!
     var titleText: String!
     var descriptionText: String!
     var type: SearchEnum!
@@ -23,14 +24,25 @@ class SearchResultViewController: UIViewController {
         print("SearchResultViewController viewDidLoad()")
         
         navigationItem.title = titleText
-        descriptionLabel.text = descriptionText
+        descriptionLabel.text = "..."
+        
+        OpenLibraryClient.getWorkInfo(workId: key) { result, error in
+            if let result = result {
+                print("getWorkInfo() success \(result)")
+                self.descriptionLabel.text = result.description?.value ?? "No description available"
+            } else {
+                print("getWorkInfo() error \(error?.localizedDescription)")
+                self.descriptionLabel.text = "..."
+            }
+            
+        }
         
         if (type == SearchEnum.author) {
             addBookToFavoritesButton.isHidden = true
         }
         
          imageView.image = UIImage(systemName: "pin") // FIXME add image placeholder
-        OpenLibraryClient.getBookCoverImage(id: id) { image, error in
+        OpenLibraryClient.getBookCoverImage(id: imageId) { image, error in
             if let image = image {
                 print("getBookCoverImage() success \(image)")
                 self.imageView.image = UIImage(data: image)

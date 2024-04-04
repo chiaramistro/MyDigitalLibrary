@@ -30,7 +30,8 @@ extension SearchViewController {
         print("tableView didSelectRowAt() \(indexPath)")
         let searchResultController = self.storyboard!.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
         let searchItem = searchResults[(indexPath as NSIndexPath).row]
-        searchResultController.id = searchItem.id
+        searchResultController.key = searchItem.key
+        searchResultController.imageId = searchItem.imageId
         searchResultController.titleText = searchItem.title
         searchResultController.descriptionText = searchItem.description
         searchResultController.type = type

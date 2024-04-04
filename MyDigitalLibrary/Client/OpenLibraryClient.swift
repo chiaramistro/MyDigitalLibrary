@@ -10,17 +10,19 @@ import Foundation
 class OpenLibraryClient {
  
     enum Endpoints {
-        static let base = "https://openlibrary.org/"
+        static let base = "https://openlibrary.org"
         
         case searchBook(String)
         case searchAuthor(String)
         case bookCover(String)
+        case works(String)
         
         var stringValue: String {
             switch self {
-                case .searchBook(let title): return Endpoints.base + "search.json" + "?q=\(title)"
-                case .searchAuthor(let name): return Endpoints.base + "search/authors.json" + "?q=\(name)"
+                case .searchBook(let title): return Endpoints.base + "/search.json" + "?q=\(title)"
+                case .searchAuthor(let name): return Endpoints.base + "/search/authors.json" + "?q=\(name)"
                 case .bookCover(let id): return "https://covers.openlibrary.org/b/olid/\(id)-M.jpg"
+                case .works(let workId): return Endpoints.base + "\(workId).json"
             }
         }
         
@@ -30,6 +32,17 @@ class OpenLibraryClient {
 
     }
     
+    class func getWorkInfo(workId: String, completion: @escaping (WorkResponse?, Error?) -> Void) -> URLSessionDataTask  {
+        let task = taskForGETRequest(url: Endpoints.works(workId).url, responseType: WorkResponse.self) { response, error in
+            if let response = response {
+                completion(response, nil)
+            } else {
+                completion(nil, error)
+            }
+        }
+        return task
+    }
+        
     class func getBookCoverImage(id: String, completion: @escaping (Data?, Error?) -> Void) {
         let download = URLSession.shared.dataTask(with: Endpoints.bookCover(id).url) { data, response, error in
              if let data = data {
