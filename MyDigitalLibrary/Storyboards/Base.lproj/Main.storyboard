@@ -209,20 +209,41 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pah-hT-5za">
+                                <rect key="frame" x="93.000000000000014" y="775" width="207.33333333333337" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Add author to favourites"/>
+                                <connections>
+                                    <action selector="onAddAuthorToFavorites:" destination="5cN-yJ-7i3" eventType="touchUpInside" id="igZ-s2-NFt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8E-f7-b4X">
+                                <rect key="frame" x="98.666666666666686" y="732" width="196" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Add book to favourites"/>
+                                <connections>
+                                    <action selector="onAddBookToFavorites:" destination="5cN-yJ-7i3" eventType="touchUpInside" id="R8N-Ge-sSm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eHa-PC-MyA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="eHa-PC-MyA" firstAttribute="bottom" secondItem="pah-hT-5za" secondAttribute="bottom" constant="8" id="3Hs-46-P6e"/>
                             <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="Efr-IK-1Aa" secondAttribute="trailing" constant="8" id="6uj-v2-iZa"/>
                             <constraint firstItem="Efr-IK-1Aa" firstAttribute="top" secondItem="eHa-PC-MyA" secondAttribute="top" constant="8" id="Qlb-Pj-KNH"/>
                             <constraint firstItem="Efr-IK-1Aa" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="Wz4-9U-iaX"/>
+                            <constraint firstItem="pah-hT-5za" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="b9t-cc-6za"/>
+                            <constraint firstItem="pah-hT-5za" firstAttribute="top" secondItem="O8E-f7-b4X" secondAttribute="bottom" constant="8" id="bXM-0L-AI6"/>
                             <constraint firstItem="nq3-0p-8yz" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="8" id="lQ2-pX-hlu"/>
+                            <constraint firstItem="O8E-f7-b4X" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="s4i-Xb-SGX"/>
                             <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="nq3-0p-8yz" secondAttribute="trailing" constant="8" id="tSM-Nu-KrC"/>
                             <constraint firstItem="nq3-0p-8yz" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="wRw-3T-GbE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zDV-ZY-jQc"/>
                     <connections>
+                        <outlet property="addBookToFavoritesButton" destination="O8E-f7-b4X" id="tsx-aq-EqB"/>
                         <outlet property="descriptionLabel" destination="nq3-0p-8yz" id="66b-tp-ecK"/>
                         <outlet property="imageView" destination="Efr-IK-1Aa" id="Iid-oP-EWX"/>
                     </connections>

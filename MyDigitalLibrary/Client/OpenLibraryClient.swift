@@ -20,7 +20,7 @@ class OpenLibraryClient {
             switch self {
                 case .searchBook(let title): return Endpoints.base + "search.json" + "?q=\(title)"
                 case .searchAuthor(let name): return Endpoints.base + "search/authors.json" + "?q=\(name)"
-                case .bookCover(let id): return "https://covers.openlibrary.org/b/isbn/\(id)-M.jpg"
+                case .bookCover(let id): return "https://covers.openlibrary.org/b/olid/\(id)-M.jpg"
             }
         }
         

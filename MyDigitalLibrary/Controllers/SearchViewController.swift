@@ -61,6 +61,7 @@ extension SearchViewController {
         searchResultController.id = searchItem.id
         searchResultController.titleText = searchItem.title
         searchResultController.descriptionText = searchItem.description
+        searchResultController.type = type
         self.navigationController?.pushViewController(searchResultController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

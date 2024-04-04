@@ -12,15 +12,22 @@ class SearchResultViewController: UIViewController {
     var id: String!
     var titleText: String!
     var descriptionText: String!
+    var type: SearchEnum!
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var addBookToFavoritesButton: UIButton!
     
     override func viewDidLoad() {
         print("SearchResultViewController viewDidLoad()")
         
         navigationItem.title = titleText
         descriptionLabel.text = descriptionText
+        
+        if (type == SearchEnum.author) {
+            addBookToFavoritesButton.isHidden = true
+        }
         
          imageView.image = UIImage(systemName: "pin") // FIXME add image placeholder
         OpenLibraryClient.getBookCoverImage(id: id) { image, error in
@@ -34,4 +41,14 @@ class SearchResultViewController: UIViewController {
             
         }
     }
+    
+    @IBAction func onAddBookToFavorites(_ sender: Any) {
+        print("onAddBookToFavorites()")
+    }
+    
+    
+    @IBAction func onAddAuthorToFavorites(_ sender: Any) {
+        print("onAddAuthorToFavorites()")
+    }
+    
 }
