@@ -26,19 +26,28 @@ class SearchResultViewController: UIViewController {
         navigationItem.title = titleText
         descriptionLabel.text = "..."
         
-        OpenLibraryClient.getWorkInfo(workId: key) { result, error in
-            if let result = result {
-                print("getWorkInfo() success \(result)")
-                self.descriptionLabel.text = result.description?.value ?? "No description available"
-            } else {
-                print("getWorkInfo() error \(error?.localizedDescription)")
-                self.descriptionLabel.text = "..."
-            }
-            
-        }
-        
         if (type == SearchEnum.author) {
             addBookToFavoritesButton.isHidden = true
+            OpenLibraryClient.getAuthorDetails(authorId: key) { result, error in
+                if let result = result {
+                    print("getAuthorDetails() success \(result)")
+                    self.descriptionLabel.text = result.bio ?? "No description available"
+                } else {
+                    print("getAuthorDetails() error \(error?.localizedDescription)")
+                    self.descriptionLabel.text = "..."
+                }
+            }
+        } else if (type == SearchEnum.book) {
+            OpenLibraryClient.getWorkInfo(workId: key) { result, error in
+                if let result = result {
+                    print("getWorkInfo() success \(result)")
+                    self.descriptionLabel.text = result.description?.value ?? "No description available"
+                } else {
+                    print("getWorkInfo() error \(error?.localizedDescription)")
+                    self.descriptionLabel.text = "..."
+                }
+                
+            }
         }
         
          imageView.image = UIImage(systemName: "pin") // FIXME add image placeholder

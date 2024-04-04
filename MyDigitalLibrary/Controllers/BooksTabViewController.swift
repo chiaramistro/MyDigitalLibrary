@@ -7,9 +7,9 @@
 
 import UIKit
 
-class BooksTabViewController: UIViewController, UITableViewDataSource {
+class BooksTabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var books: [Book] = []
+    var books: [LibraryDetails] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,6 +24,7 @@ class BooksTabViewController: UIViewController, UITableViewDataSource {
         navigationItem.title = "My Digital Library"
         
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         
         
     }

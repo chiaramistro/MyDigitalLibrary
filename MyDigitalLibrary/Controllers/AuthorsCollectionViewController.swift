@@ -7,7 +7,11 @@
 
 import UIKit
 
-class AuthorsCollectionViewController: UIViewController {
+class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var authors: [LibraryDetails] = []
+
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -19,6 +23,8 @@ class AuthorsCollectionViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addAuthor))
         navigationItem.title = "My Digital Library"
         
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     @objc func addAuthor() {

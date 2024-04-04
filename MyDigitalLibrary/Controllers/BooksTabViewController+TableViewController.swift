@@ -26,4 +26,15 @@ extension BooksTabViewController {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let searchResultController = self.storyboard!.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
+        let book = books[(indexPath as NSIndexPath).row]
+        searchResultController.key = book.key
+        searchResultController.imageId = book.imageId
+        searchResultController.titleText = book.title
+        searchResultController.descriptionText = book.description
+        searchResultController.type = SearchEnum.book
+        self.navigationController?.pushViewController(searchResultController, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

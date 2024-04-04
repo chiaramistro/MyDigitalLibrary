@@ -56,17 +56,49 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B8F-U0-cPB">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="127" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Gfi-ZJ-bId">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AuthorCollectionViewCell" id="Gfi-ZJ-bId" customClass="AuthorCollectionViewCell" customModule="MyDigitalLibrary" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="4.666666666666667" width="119" height="119"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="UYL-ge-qeP">
-                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trk-BB-lW5">
+                                                    <rect key="frame" x="34" y="49" width="51.333333333333343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="trk-BB-lW5" firstAttribute="centerY" secondItem="UYL-ge-qeP" secondAttribute="centerY" id="dp6-X5-EP7"/>
+                                                <constraint firstItem="trk-BB-lW5" firstAttribute="centerX" secondItem="UYL-ge-qeP" secondAttribute="centerX" id="rBu-Id-mVr"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="119" height="119"/>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="trk-BB-lW5" id="xQc-YU-ohm"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OyV-D9-bzS">
+                                        <rect key="frame" x="129" y="0.0" width="127" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hua-io-7gt">
+                                            <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qLm-ZV-bU1">
+                                        <rect key="frame" x="266" y="0.0" width="127" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ee2-RN-lg2">
+                                            <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
@@ -89,6 +121,7 @@
                     <navigationItem key="navigationItem" id="0Iw-75-To9"/>
                     <connections>
                         <outlet property="activityIndicator" destination="SVJ-Pz-NK4" id="3Va-XF-Ioi"/>
+                        <outlet property="collectionView" destination="x5M-Zb-hZs" id="rKO-bi-7X6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xwJ-6C-Yzy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

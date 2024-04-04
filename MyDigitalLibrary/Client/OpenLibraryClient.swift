@@ -16,6 +16,7 @@ class OpenLibraryClient {
         case searchAuthor(String)
         case bookCover(String)
         case works(String)
+        case authorDetails(String)
         
         var stringValue: String {
             switch self {
@@ -23,6 +24,7 @@ class OpenLibraryClient {
                 case .searchAuthor(let name): return Endpoints.base + "/search/authors.json" + "?q=\(name)"
                 case .bookCover(let id): return "https://covers.openlibrary.org/b/olid/\(id)-M.jpg"
                 case .works(let workId): return Endpoints.base + "\(workId).json"
+                case .authorDetails(let authorId): return Endpoints.base + "/authors/\(authorId).json"
             }
         }
         
@@ -32,6 +34,17 @@ class OpenLibraryClient {
 
     }
     
+    class func getAuthorDetails(authorId: String, completion: @escaping (AuthorResponse?, Error?) -> Void) -> URLSessionDataTask  {
+        let task = taskForGETRequest(url: Endpoints.authorDetails(authorId).url, responseType: AuthorResponse.self) { response, error in
+            if let response = response {
+                completion(response, nil)
+            } else {
+                completion(nil, error)
+            }
+        }
+        return task
+    }
+        
     class func getWorkInfo(workId: String, completion: @escaping (WorkResponse?, Error?) -> Void) -> URLSessionDataTask  {
         let task = taskForGETRequest(url: Endpoints.works(workId).url, responseType: WorkResponse.self) { response, error in
             if let response = response {
