@@ -22,7 +22,7 @@ class OpenLibraryClient {
             switch self {
                 case .searchBook(let title): return Endpoints.base + "/search.json" + "?q=\(title)"
                 case .searchAuthor(let name): return Endpoints.base + "/search/authors.json" + "?q=\(name)"
-                case .cover(let id, let type): return "https://covers.openlibrary.org/\(getType(type: type))/olid/\(id)-M.jpg"
+                case .cover(let id, let type): return "https://covers.openlibrary.org/\(type.rawValue)/olid/\(id)-M.jpg"
                 case .works(let workId): return Endpoints.base + "\(workId).json"
                 case .authorDetails(let authorId): return Endpoints.base + "/authors/\(authorId).json"
             }
@@ -31,18 +31,6 @@ class OpenLibraryClient {
         var url: URL {
             return URL(string: stringValue)!
         }
-        
-        func getType(type: SearchEnum) -> String {
-            switch (type) {
-            case SearchEnum.book:
-                return "b"
-            case SearchEnum.author:
-                return "a"
-            default:
-                return ""
-            }
-        }
-
     }
     
     class func getAuthorDetails(authorId: String, completion: @escaping (AuthorResponse?, Error?) -> Void) -> URLSessionDataTask  {

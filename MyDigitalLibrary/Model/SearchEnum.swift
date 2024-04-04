@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SearchEnum {
-    case book
-    case author
+enum SearchEnum: String {
+    case book = "b"
+    case author = "a"
 }
