@@ -7,11 +7,6 @@
 
 import UIKit
 
-//class SearchResult {
-//    var title: String
-//    var desc: String
-//}
-
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var type: SearchEnum!
@@ -19,7 +14,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     // FIXME save more complex search results?
-    var searchResults: [String] = []
+    var searchResults: [LibraryDetails] = []
     
     @IBOutlet weak var searchBar: UISearchBar!
     var currentSearchTask: URLSessionDataTask?
@@ -54,7 +49,7 @@ extension SearchViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath)
 
         // Configure cell
-        cell.textLabel?.text = result
+        cell.textLabel?.text = result.title
         
         return cell
     }
@@ -62,9 +57,10 @@ extension SearchViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tableView didSelectRowAt() \(indexPath)")
         let searchResultController = self.storyboard!.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
-        searchResultController.id = "0385472579" // FIXME
-        searchResultController.titleText = searchResults[(indexPath as NSIndexPath).row]
-        searchResultController.descriptionText = "My description" // FIXME
+        let searchItem = searchResults[(indexPath as NSIndexPath).row]
+        searchResultController.id = searchItem.id
+        searchResultController.titleText = searchItem.title
+        searchResultController.descriptionText = searchItem.description
         self.navigationController?.pushViewController(searchResultController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -105,7 +101,7 @@ extension SearchViewController: UISearchBarDelegate {
             }
             
             for entry in result {
-                self.searchResults.append(entry.name)
+                self.searchResults.append(LibraryDetails(id: entry.key, title: entry.name, description: entry.name))
             }
             
             DispatchQueue.main.async {
@@ -128,7 +124,7 @@ extension SearchViewController: UISearchBarDelegate {
             }
             
             for entry in result {
-                self.searchResults.append(entry.title)
+                self.searchResults.append(LibraryDetails(id: (entry.coverEditionKey ?? entry.editionKey?[0]) ?? "", title: entry.title, description: entry.title))
             }
             
             DispatchQueue.main.async {

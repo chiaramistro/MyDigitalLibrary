@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90F47812BBD9E350093F386 /* LibraryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F47802BBD9E350093F386 /* LibraryDetails.swift */; };
 		E96FE2CC2BBC35C100082221 /* OpenLibraryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96FE2CB2BBC35C100082221 /* OpenLibraryClient.swift */; };
 		E96FE2CF2BBC365700082221 /* BookSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96FE2CE2BBC365700082221 /* BookSearchResponse.swift */; };
 		E96FE2D12BBC3A0400082221 /* BooksTabViewController+TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96FE2D02BBC3A0400082221 /* BooksTabViewController+TableViewController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E90F47802BBD9E350093F386 /* LibraryDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetails.swift; sourceTree = "<group>"; };
 		E96FE2CB2BBC35C100082221 /* OpenLibraryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLibraryClient.swift; sourceTree = "<group>"; };
 		E96FE2CE2BBC365700082221 /* BookSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchResponse.swift; sourceTree = "<group>"; };
 		E96FE2D02BBC3A0400082221 /* BooksTabViewController+TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BooksTabViewController+TableViewController.swift"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				E96FE2CD2BBC35D000082221 /* Core */,
 				E9C4669E2BBBECA500D0833A /* Data */,
 				E96FE2D62BBC45E200082221 /* SearchEnum.swift */,
+				E90F47802BBD9E350093F386 /* LibraryDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				E9C466842BBBEC4400D0833A /* AppDelegate.swift in Sources */,
 				E96FE2D52BBC446C00082221 /* SearchViewController.swift in Sources */,
 				E9C4668E2BBBEC4400D0833A /* MyDigitalLibrary.xcdatamodeld in Sources */,
+				E90F47812BBD9E350093F386 /* LibraryDetails.swift in Sources */,
 				E96FE2CC2BBC35C100082221 /* OpenLibraryClient.swift in Sources */,
 				E96FE2D12BBC3A0400082221 /* BooksTabViewController+TableViewController.swift in Sources */,
 				E9C466862BBBEC4400D0833A /* SceneDelegate.swift in Sources */,
