@@ -15,51 +15,60 @@ class LibraryDetailsViewController: UIViewController {
     var descriptionText: String!
     var type: SearchEnum!
     
-    // FIXME add activity loading
-    
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var addBookToFavoritesButton: UIButton!
+    
+    @IBOutlet weak var imageActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var descriptionActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         print("LibraryDetailsViewController viewDidLoad()")
         
         navigationItem.title = titleText
         descriptionLabel.text = "..."
+        descriptionActivityIndicator.startAnimating()
         
         if (type == SearchEnum.author) {
             addBookToFavoritesButton.isHidden = true
             OpenLibraryClient.getAuthorDetails(authorId: key) { result, error in
                 if let result = result {
                     print("getAuthorDetails() success \(result)")
+                    self.descriptionActivityIndicator.stopAnimating()
                     self.descriptionLabel.text = result.bio ?? "No description available"
                 } else {
                     print("getAuthorDetails() error \(error?.localizedDescription)")
-                    self.descriptionLabel.text = "..."
+                    self.descriptionActivityIndicator.stopAnimating()
+                    self.descriptionLabel.text = "No description available"
                 }
             }
         } else if (type == SearchEnum.book) {
             OpenLibraryClient.getWorkInfo(workId: key) { result, error in
                 if let result = result {
                     print("getWorkInfo() success \(result)")
+                    self.descriptionActivityIndicator.stopAnimating()
                     self.descriptionLabel.text = result.description?.value ?? "No description available"
                 } else {
                     print("getWorkInfo() error \(error?.localizedDescription)")
-                    self.descriptionLabel.text = "..."
+                    self.descriptionActivityIndicator.stopAnimating()
+                    self.descriptionLabel.text = "No description available"
                 }
                 
             }
         }
         
-         imageView.image = UIImage(systemName: "pin") // FIXME add image placeholder
+        imageActivityIndicator.startAnimating()
+        imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
         OpenLibraryClient.getBookCoverImage(id: imageId) { image, error in
             if let image = image {
                 print("getBookCoverImage() success \(image)")
+                self.imageActivityIndicator.stopAnimating()
                 self.imageView.image = UIImage(data: image)
             } else {
                 print("getBookCoverImage() error \(error?.localizedDescription)")
-                self.imageView.image = UIImage(systemName: "home")
+                self.imageActivityIndicator.stopAnimating()
+                self.imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
             }
             
         }
