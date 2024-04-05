@@ -21,9 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         dataController.load()
         
         let tabController = window?.rootViewController as! UITabBarController
-        let booksTabNavontroller = tabController.viewControllers?.first as! UINavigationController
+        let booksTabNavontroller = tabController.viewControllers?[0] as! UINavigationController
         let booksTabViewController = booksTabNavontroller.topViewController as! BooksTabViewController
         booksTabViewController.dataController = dataController
+        
+        let authorsTabNavontroller = tabController.viewControllers?[1] as! UINavigationController
+        let authorsTabViewController = authorsTabNavontroller.topViewController as! AuthorsCollectionViewController
+        authorsTabViewController.dataController = dataController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

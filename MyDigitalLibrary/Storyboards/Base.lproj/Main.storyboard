@@ -273,6 +273,22 @@
             </objects>
             <point key="canvasLocation" x="-341.2213740458015" y="1810.5633802816903"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Hp-2g-Mhx">
+            <objects>
+                <navigationController id="xCy-fI-Zod" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kKI-sM-IDV">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9dc-7t-BYL" kind="relationship" relationship="rootViewController" id="JNh-Oy-bGX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Rf-5B-4I6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1240" y="2498"/>
+        </scene>
         <!--Books-->
         <scene sceneID="guG-sW-waK">
             <objects>
@@ -335,6 +351,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-341" y="-370"/>
+        </scene>
+        <!--Author Details View Controller-->
+        <scene sceneID="0Tv-MS-xIU">
+            <objects>
+                <viewController storyboardIdentifier="AuthorDetailsViewController" id="9dc-7t-BYL" customClass="AuthorDetailsViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="33z-HZ-hHR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hmi-gy-rM3">
+                                <rect key="frame" x="8" y="103" width="377" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="LzJ-Li-pzb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio of the author Bio of the author Bio of the author" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCz-fl-lWc">
+                                <rect key="frame" x="8" y="411" width="377" height="407"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="0Xd-5I-NJA">
+                                <rect key="frame" x="186.66666666666666" y="411" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tDt-6c-ixi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aCz-fl-lWc" firstAttribute="leading" secondItem="tDt-6c-ixi" secondAttribute="leading" constant="8" id="24Q-Pa-sb8"/>
+                            <constraint firstItem="hmi-gy-rM3" firstAttribute="leading" secondItem="tDt-6c-ixi" secondAttribute="leading" constant="8" id="9hv-jr-TZj"/>
+                            <constraint firstItem="0Xd-5I-NJA" firstAttribute="top" secondItem="hmi-gy-rM3" secondAttribute="bottom" constant="8" id="BG7-6i-D5B"/>
+                            <constraint firstItem="hmi-gy-rM3" firstAttribute="top" secondItem="tDt-6c-ixi" secondAttribute="top" id="PmX-Kg-7Zn"/>
+                            <constraint firstItem="0Xd-5I-NJA" firstAttribute="centerX" secondItem="33z-HZ-hHR" secondAttribute="centerX" id="V4X-Du-34E"/>
+                            <constraint firstItem="tDt-6c-ixi" firstAttribute="trailing" secondItem="aCz-fl-lWc" secondAttribute="trailing" constant="8" id="lqb-bu-F8Q"/>
+                            <constraint firstItem="tDt-6c-ixi" firstAttribute="bottom" secondItem="aCz-fl-lWc" secondAttribute="bottom" id="m4f-Sr-hPZ"/>
+                            <constraint firstItem="tDt-6c-ixi" firstAttribute="trailing" secondItem="hmi-gy-rM3" secondAttribute="trailing" constant="8" id="qEE-FR-oRT"/>
+                            <constraint firstItem="aCz-fl-lWc" firstAttribute="top" secondItem="hmi-gy-rM3" secondAttribute="bottom" constant="8" id="x17-xP-JIK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5bD-i3-rJo"/>
+                    <connections>
+                        <outlet property="authorBioLabel" destination="aCz-fl-lWc" id="j6i-nY-DyD"/>
+                        <outlet property="bioActivityIndicator" destination="0Xd-5I-NJA" id="BUF-Uc-vj7"/>
+                        <outlet property="imageView" destination="hmi-gy-rM3" id="MaT-w1-yCr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cEz-9R-tu4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-341" y="2498"/>
         </scene>
     </scenes>
     <resources>

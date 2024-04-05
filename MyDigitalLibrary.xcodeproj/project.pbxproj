@@ -12,6 +12,7 @@
 		E91507E82BC009870092BB5C /* Author+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91507E42BC009870092BB5C /* Author+CoreDataProperties.swift */; };
 		E91507E92BC009870092BB5C /* Book+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91507E52BC009870092BB5C /* Book+CoreDataClass.swift */; };
 		E91507EA2BC009870092BB5C /* Book+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91507E62BC009870092BB5C /* Book+CoreDataProperties.swift */; };
+		E91507EE2BC00F3B0092BB5C /* AuthorDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91507ED2BC00F3B0092BB5C /* AuthorDetailsViewController.swift */; };
 		E96FE2CC2BBC35C100082221 /* OpenLibraryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96FE2CB2BBC35C100082221 /* OpenLibraryClient.swift */; };
 		E96FE2CF2BBC365700082221 /* BookSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96FE2CE2BBC365700082221 /* BookSearchResponse.swift */; };
 		E96FE2D12BBC3A0400082221 /* BooksTabViewController+TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96FE2D02BBC3A0400082221 /* BooksTabViewController+TableViewController.swift */; };
@@ -42,6 +43,7 @@
 		E91507E42BC009870092BB5C /* Author+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E91507E52BC009870092BB5C /* Book+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E91507E62BC009870092BB5C /* Book+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E91507ED2BC00F3B0092BB5C /* AuthorDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailsViewController.swift; sourceTree = "<group>"; };
 		E96FE2CB2BBC35C100082221 /* OpenLibraryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLibraryClient.swift; sourceTree = "<group>"; };
 		E96FE2CE2BBC365700082221 /* BookSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchResponse.swift; sourceTree = "<group>"; };
 		E96FE2D02BBC3A0400082221 /* BooksTabViewController+TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BooksTabViewController+TableViewController.swift"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				E9A460652BBEBECB00088C63 /* SearchViewController+SearchBarDelegate.swift */,
 				E9A460672BBEBF1B00088C63 /* SearchViewController+TableViewController.swift */,
 				E9FF66472BBFEAD100E0BDF9 /* BookDetailsViewController.swift */,
+				E91507ED2BC00F3B0092BB5C /* AuthorDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				E9FF66482BBFEAD100E0BDF9 /* BookDetailsViewController.swift in Sources */,
 				E9A460682BBEBF1B00088C63 /* SearchViewController+TableViewController.swift in Sources */,
 				E9A4606A2BBEE29500088C63 /* WorkResponse.swift in Sources */,
+				E91507EE2BC00F3B0092BB5C /* AuthorDetailsViewController.swift in Sources */,
 				E9A4606E2BBEF07400088C63 /* AuthorCollectionViewCell.swift in Sources */,
 				E9C466882BBBEC4400D0833A /* BooksTabViewController.swift in Sources */,
 				E96FE2D32BBC409C00082221 /* AuthorsCollectionViewController.swift in Sources */,

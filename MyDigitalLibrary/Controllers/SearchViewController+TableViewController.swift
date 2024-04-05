@@ -28,15 +28,30 @@ extension SearchViewController {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
-            print("Add book to favourites")
-            let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
-            let book = Book(context: self.dataController.viewContext)
-            book.key = selectedResult.descriptionKey
-            book.coverKey = selectedResult.imageKey
-            book.title = selectedResult.title
-            try? self.dataController.viewContext.save()
-            debugPrint("New book saved successfully")
+            switch (self.type as! SearchEnum) {
+            case SearchEnum.book:
+                print("Add book to favourites")
+                let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
+                let book = Book(context: self.dataController.viewContext)
+                book.key = selectedResult.descriptionKey
+                book.coverKey = selectedResult.imageKey
+                book.title = selectedResult.title
+                try? self.dataController.viewContext.save()
+                debugPrint("New book saved successfully")
+            case SearchEnum.author:
+                print("Add author to favourites")
+                let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
+                let author = Author(context: self.dataController.viewContext)
+                author.key = selectedResult.descriptionKey
+                author.photoKey = selectedResult.imageKey
+                author.name = selectedResult.title
+                try? self.dataController.viewContext.save()
+                debugPrint("New author saved successfully")
+            default:
+                debugPrint("Unknown type")
+            }
         }
+        
         favorite.backgroundColor = .red
 
         return [favorite]

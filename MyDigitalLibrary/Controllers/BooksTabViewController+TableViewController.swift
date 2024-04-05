@@ -30,16 +30,16 @@ extension BooksTabViewController {
         let book = fetchedResultsController.object(at: indexPath)
         bookDetailsController.book = book
         bookDetailsController.onRemoveBook = { [weak self] in
-            self?.deleteBook(bookToDelete: book)
+            self?.deleteBook(itemToDelete: book)
             self?.navigationController?.popViewController(animated: true)
         }
         self.navigationController?.pushViewController(bookDetailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func deleteBook(bookToDelete: Book) {
+    func deleteBook(itemToDelete: Book) {
         print("Remove book from favourites")
-        dataController.viewContext.delete(bookToDelete)
+        dataController.viewContext.delete(itemToDelete)
         try? dataController.viewContext.save()
         debugPrint("Book removed from favourites successfully")
     }

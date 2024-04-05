@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class BookDetailsViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class BookDetailsViewController: UIViewController {
 
     var book: Book!
     var isFavorite: Bool = true
