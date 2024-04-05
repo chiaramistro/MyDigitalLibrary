@@ -30,9 +30,23 @@ extension BooksTabViewController {
         let book = fetchedResultsController.object(at: indexPath)
         bookDetailsController.book = book
         bookDetailsController.onRemoveBook = { [weak self] in
+            print("onRemoveBook()")
             self?.deleteBook(itemToDelete: book)
             self?.navigationController?.popViewController(animated: true)
         }
+        bookDetailsController.onSaveImage = { [weak self] imageData in
+            print("onSaveImage()")
+            book.cover = imageData
+            try? self?.dataController.viewContext.save()
+            debugPrint("Book cover saved successfully")
+        }
+        bookDetailsController.onSaveTrama = { [weak self] trama in
+            print("onSaveTrama()")
+            book.trama = trama
+            try? self?.dataController.viewContext.save()
+            debugPrint("Book trama saved successfully")
+        }
+        
         self.navigationController?.pushViewController(bookDetailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

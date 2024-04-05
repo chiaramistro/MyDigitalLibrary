@@ -13,6 +13,8 @@ class AuthorDetailsViewController: UIViewController {
     var author: Author!
     var isFavorite: Bool = true
     var onRemoveAuthor: (() -> Void)?
+    var onSavePhoto: ((_ image: Data) -> Void)?
+    var onSaveBio: ((_ trama: String?) -> Void)?
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -33,14 +35,17 @@ class AuthorDetailsViewController: UIViewController {
 
         // FIXME description does not fill space + does not scroll
         if let authorBio = author.bio {
+            debugPrint("Author DOES have bio")
             bioActivityIndicator.stopAnimating()
             authorBioLabel.text = authorBio
         } else {
+            debugPrint("Author DOES NOT have bio")
             OpenLibraryClient.getAuthorDetails(authorId: author.key ?? "") { result, error in
                     if let result = result {
                         print("getAuthorDetails() success \(result)")
                         self.bioActivityIndicator.stopAnimating()
                         self.authorBioLabel.text = result.bio ?? "No description available"
+                        self.onSaveBio?(result.bio)
                     } else {
                         print("getAuthorDetails() error \(error?.localizedDescription)")
                         self.bioActivityIndicator.stopAnimating()
@@ -55,13 +60,16 @@ class AuthorDetailsViewController: UIViewController {
     func getAuthorPhoto() {
         imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
         if let authorPhoto = author.photo {
+            debugPrint("Author DOES have photo")
             imageView.image = UIImage(data: authorPhoto)
         } else {
+            debugPrint("Author DOES NOT have photo")
             OpenLibraryClient.getCoverImage(id: author.photoKey ?? "", type: SearchEnum.author) { image, error in
                 print("getCoverImage() success")
                 if let image = image {
                     print("getCoverImage() success \(image)")
                     self.imageView.image = UIImage(data: image)
+                    self.onSavePhoto?(image)
                 } else {
                     print("getCoverImage() error \(error?.localizedDescription)")
                     self.imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder

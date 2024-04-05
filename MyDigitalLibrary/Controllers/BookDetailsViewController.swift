@@ -13,6 +13,8 @@ class BookDetailsViewController: UIViewController {
     var book: Book!
     var isFavorite: Bool = true
     var onRemoveBook: (() -> Void)?
+    var onSaveImage: ((_ image: Data) -> Void)?
+    var onSaveTrama: ((_ trama: String?) -> Void)?
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -34,14 +36,17 @@ class BookDetailsViewController: UIViewController {
         
         // FIXME description does not fill space + does not scroll
         if let bookTrama = book.trama {
+            debugPrint("Book DOES have trama")
             descriptionActivityIndicator.stopAnimating()
             descriptionLabel.text = bookTrama
         } else {
+            debugPrint("Book DOES NOT have trama")
             OpenLibraryClient.getWorkInfo(workId: book.key ?? "") { result, error in
                 if let result = result {
                     print("getWorkInfo() success")
                     self.descriptionActivityIndicator.stopAnimating()
                     self.descriptionLabel.text = result.description?.value ?? "No description available"
+                    self.onSaveTrama?(result.description?.value)
                 } else {
                     print("getWorkInfo() error \(error?.localizedDescription)")
                     self.descriptionActivityIndicator.stopAnimating()
@@ -57,13 +62,16 @@ class BookDetailsViewController: UIViewController {
     func getBookCover() {
         imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
         if let bookCover = book.cover {
+            debugPrint("Book DOES have cover")
             self.imageView.image = UIImage(data: bookCover)
         } else {
+            debugPrint("Book DOES NOT have cover")
             OpenLibraryClient.getCoverImage(id: book.coverKey ?? "", type: SearchEnum.book) { image, error in
                 print("getBookCover() success")
                 if let image = image {
                     print("getBookCoverImage() success \(image)")
                     self.imageView.image = UIImage(data: image)
+                    self.onSaveImage?(image)
                 } else {
                     print("getBookCoverImage() error \(error?.localizedDescription)")
                     self.imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
