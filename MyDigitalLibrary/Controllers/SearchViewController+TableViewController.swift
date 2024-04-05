@@ -26,16 +26,23 @@ extension SearchViewController {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
+            print("Add book to favourites")
+            let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
+            let book = Book(context: self.dataController.viewContext)
+            book.key = selectedResult.key
+            book.title = selectedResult.title
+            try? self.dataController.viewContext.save()
+            debugPrint("New book saved successfully")
+        }
+        favorite.backgroundColor = .red
+
+        return [favorite]
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tableView didSelectRowAt() \(indexPath)")
-        let detailsController = self.storyboard!.instantiateViewController(withIdentifier: "LibraryDetailsViewController") as! LibraryDetailsViewController
-        let searchItem = searchResults[(indexPath as NSIndexPath).row]
-        detailsController.key = searchItem.key
-        detailsController.imageId = searchItem.imageId
-        detailsController.titleText = searchItem.title
-        detailsController.type = type
-        self.navigationController?.pushViewController(detailsController, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

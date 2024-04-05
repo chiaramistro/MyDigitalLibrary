@@ -223,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="-1240" y="1811"/>
         </scene>
-        <!--Library Details View Controller-->
+        <!--Book Details View Controller-->
         <scene sceneID="qe9-Fn-K3p">
             <objects>
-                <viewController storyboardIdentifier="LibraryDetailsViewController" id="5cN-yJ-7i3" customClass="LibraryDetailsViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookDetailsViewController" id="5cN-yJ-7i3" customClass="BookDetailsViewController" customModule="MyDigitalLibrary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U2n-yl-9LJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,9 +264,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="zDV-ZY-jQc"/>
                     <connections>
-                        <outlet property="descriptionActivityIndicator" destination="tzK-Cl-2M0" id="hIJ-JO-JOG"/>
-                        <outlet property="descriptionLabel" destination="nq3-0p-8yz" id="66b-tp-ecK"/>
-                        <outlet property="imageView" destination="Efr-IK-1Aa" id="Iid-oP-EWX"/>
+                        <outlet property="descriptionActivityIndicator" destination="tzK-Cl-2M0" id="CKH-y9-HKg"/>
+                        <outlet property="descriptionLabel" destination="nq3-0p-8yz" id="iao-kf-viZ"/>
+                        <outlet property="imageView" destination="Efr-IK-1Aa" id="XjL-v6-St1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uq1-5p-UhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

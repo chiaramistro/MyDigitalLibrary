@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -19,14 +20,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchBar: UISearchBar!
     var currentSearchTask: URLSessionDataTask?
     
+    var dataController: DataController!
+    
     override func viewDidLoad() {
         print("SearchViewController viewDidLoad()")
         print("SearchViewController viewDidLoad() type \(type)")
         
         navigationItem.title = "Search"
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     func setLoading(isLoading: Bool) {

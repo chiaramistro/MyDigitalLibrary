@@ -24,15 +24,6 @@ extension AuthorsCollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("collectionView select() \(indexPath)")
-        let detailsController = self.storyboard!.instantiateViewController(withIdentifier: "LibraryDetailsViewController") as! LibraryDetailsViewController
-        let author = authors[(indexPath as NSIndexPath).row]
-        detailsController.key = author.key
-        detailsController.imageId = author.imageId
-        detailsController.titleText = author.title
-        detailsController.descriptionText = author.description
-        detailsController.type = SearchEnum.author
-        detailsController.isFavorite = true
-        self.navigationController?.pushViewController(detailsController, animated: true)
     }
     
 }

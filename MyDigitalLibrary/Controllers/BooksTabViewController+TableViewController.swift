@@ -26,15 +26,11 @@ extension BooksTabViewController {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsController = self.storyboard!.instantiateViewController(withIdentifier: "LibraryDetailsViewController") as! LibraryDetailsViewController
-        let book = books[(indexPath as NSIndexPath).row]
-        detailsController.key = book.key
-        detailsController.imageId = book.imageId
-        detailsController.titleText = book.title
-        detailsController.descriptionText = book.description
-        detailsController.type = SearchEnum.book
-        detailsController.isFavorite = true
-        self.navigationController?.pushViewController(detailsController, animated: true)
+        let bookDetailsController = self.storyboard!.instantiateViewController(withIdentifier: "BookDetailsViewController") as! BookDetailsViewController
+        let book = fetchedResultsController.object(at: indexPath)
+        bookDetailsController.book = book
+        bookDetailsController.dataController = dataController
+        self.navigationController?.pushViewController(bookDetailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

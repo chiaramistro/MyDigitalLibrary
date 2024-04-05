@@ -34,6 +34,11 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("BooksTabViewController viewDidAppear()")
+        tableView.reloadData()
+    }
+    
     fileprivate func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<Book> = Book.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "key", ascending: false)
@@ -57,6 +62,7 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
         print("addBook()")
         let searchController = self.storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         searchController.type = SearchEnum.book
+        searchController.dataController = dataController
        self.navigationController?.pushViewController(searchController, animated: true)
     }
 
