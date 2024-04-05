@@ -9,7 +9,7 @@ import UIKit
 
 class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var authors: [LibraryDetails] = []
+    var authors: [SearchResult] = []
 
     @IBOutlet weak var collectionView: UICollectionView!
     

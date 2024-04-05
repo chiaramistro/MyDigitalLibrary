@@ -97,7 +97,7 @@ class OpenLibraryClient {
     // MARK: - Generic GET request method
 
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
-        print(url)
+        print("taskForGETRequest URL \(url)")
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 print("Data not valid")

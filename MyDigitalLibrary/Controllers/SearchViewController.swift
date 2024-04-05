@@ -14,8 +14,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
-    // FIXME save more complex search results?
-    var searchResults: [LibraryDetails] = []
+    var searchResults: [SearchResult] = []
     
     @IBOutlet weak var searchBar: UISearchBar!
     var currentSearchTask: URLSessionDataTask?

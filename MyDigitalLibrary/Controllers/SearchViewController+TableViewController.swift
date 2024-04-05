@@ -31,7 +31,7 @@ extension SearchViewController {
             print("Add book to favourites")
             let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
             let book = Book(context: self.dataController.viewContext)
-            book.key = selectedResult.key
+            book.key = selectedResult.descriptionKey
             book.title = selectedResult.title
             try? self.dataController.viewContext.save()
             debugPrint("New book saved successfully")
