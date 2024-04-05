@@ -33,7 +33,6 @@ extension SearchViewController {
         detailsController.key = searchItem.key
         detailsController.imageId = searchItem.imageId
         detailsController.titleText = searchItem.title
-        detailsController.descriptionText = searchItem.description
         detailsController.type = type
         self.navigationController?.pushViewController(detailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)

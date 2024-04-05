@@ -34,6 +34,7 @@ extension BooksTabViewController {
         detailsController.titleText = book.title
         detailsController.descriptionText = book.description
         detailsController.type = SearchEnum.book
+        detailsController.isFavorite = true
         self.navigationController?.pushViewController(detailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

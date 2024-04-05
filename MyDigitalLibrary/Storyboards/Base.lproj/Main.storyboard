@@ -233,67 +233,38 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Efr-IK-1Aa">
                                 <rect key="frame" x="8" y="103" width="377" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="hfY-eG-DzQ"/>
+                                    <constraint firstAttribute="height" constant="300" id="fSM-pP-fcc"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="RYB-g4-e4l">
-                                <rect key="frame" x="186.66666666666666" y="111" width="20" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="ExE-vY-eMt"/>
-                                </constraints>
-                            </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description of the book Description of the book" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nq3-0p-8yz">
-                                <rect key="frame" x="8" y="419" width="377" height="20.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nq3-0p-8yz">
+                                <rect key="frame" x="8" y="411" width="377" height="407"/>
+                                <string key="text">Description of the book Description of the bookDescription of the book Description of the bookDescription of the book Description of the bookDescription of the book Description of the bookDescription of the book Description of the book</string>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pah-hT-5za">
-                                <rect key="frame" x="93.000000000000014" y="490.33333333333331" width="207.33333333333337" height="34.999999999999943"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Add author to favourites"/>
-                                <connections>
-                                    <action selector="onAddAuthorToFavorites:" destination="5cN-yJ-7i3" eventType="touchUpInside" id="igZ-s2-NFt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8E-f7-b4X">
-                                <rect key="frame" x="98.666666666666686" y="447.33333333333331" width="196" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Add book to favourites"/>
-                                <connections>
-                                    <action selector="onAddBookToFavorites:" destination="5cN-yJ-7i3" eventType="touchUpInside" id="R8N-Ge-sSm"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tzK-Cl-2M0">
-                                <rect key="frame" x="186.66666666666666" y="419" width="20" height="20"/>
+                                <rect key="frame" x="186.66666666666666" y="411" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eHa-PC-MyA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pah-hT-5za" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="8vL-rI-jZR"/>
-                            <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="nq3-0p-8yz" secondAttribute="trailing" constant="8" id="Fir-o4-SJz"/>
-                            <constraint firstItem="pah-hT-5za" firstAttribute="top" secondItem="O8E-f7-b4X" secondAttribute="bottom" constant="8" id="Git-Un-sEE"/>
-                            <constraint firstItem="O8E-f7-b4X" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="IUF-mZ-zis"/>
-                            <constraint firstItem="Efr-IK-1Aa" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="JvY-G4-70G"/>
-                            <constraint firstItem="Efr-IK-1Aa" firstAttribute="top" secondItem="eHa-PC-MyA" secondAttribute="top" id="Kp8-7B-eiY"/>
-                            <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="Efr-IK-1Aa" secondAttribute="trailing" constant="8" id="MQZ-gT-L4K"/>
-                            <constraint firstItem="nq3-0p-8yz" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="Nj5-KO-b7X"/>
-                            <constraint firstItem="tzK-Cl-2M0" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="16" id="Y6z-Xy-xA5"/>
-                            <constraint firstItem="RYB-g4-e4l" firstAttribute="top" secondItem="eHa-PC-MyA" secondAttribute="top" constant="8" id="fWk-10-bdS"/>
-                            <constraint firstItem="nq3-0p-8yz" firstAttribute="top" secondItem="RYB-g4-e4l" secondAttribute="bottom" constant="8" id="gpB-xO-YV7"/>
-                            <constraint firstItem="RYB-g4-e4l" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="js7-Sb-YbN"/>
-                            <constraint firstItem="O8E-f7-b4X" firstAttribute="top" secondItem="nq3-0p-8yz" secondAttribute="bottom" constant="8" id="p2X-6c-YoN"/>
-                            <constraint firstItem="nq3-0p-8yz" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="16" id="pQf-9v-txB"/>
-                            <constraint firstItem="tzK-Cl-2M0" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="qre-9J-UZb"/>
+                            <constraint firstItem="eHa-PC-MyA" firstAttribute="bottom" secondItem="nq3-0p-8yz" secondAttribute="bottom" id="0Ue-Vc-zJD"/>
+                            <constraint firstItem="tzK-Cl-2M0" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="8Zy-5G-M1X"/>
+                            <constraint firstItem="Efr-IK-1Aa" firstAttribute="top" secondItem="eHa-PC-MyA" secondAttribute="top" id="Ho0-np-j8R"/>
+                            <constraint firstItem="tzK-Cl-2M0" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="8" id="N8w-eK-2eu"/>
+                            <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="Efr-IK-1Aa" secondAttribute="trailing" constant="8" id="XGP-WG-AWw"/>
+                            <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="nq3-0p-8yz" secondAttribute="trailing" constant="8" id="mA3-FY-jaL"/>
+                            <constraint firstItem="nq3-0p-8yz" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="8" id="pNM-ym-evX"/>
+                            <constraint firstItem="nq3-0p-8yz" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="qWM-Fq-2Yx"/>
+                            <constraint firstItem="Efr-IK-1Aa" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="qr8-bs-2zJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zDV-ZY-jQc"/>
                     <connections>
-                        <outlet property="addBookToFavoritesButton" destination="O8E-f7-b4X" id="tsx-aq-EqB"/>
                         <outlet property="descriptionActivityIndicator" destination="tzK-Cl-2M0" id="hIJ-JO-JOG"/>
                         <outlet property="descriptionLabel" destination="nq3-0p-8yz" id="66b-tp-ecK"/>
-                        <outlet property="imageActivityIndicator" destination="RYB-g4-e4l" id="hkN-H1-vwj"/>
                         <outlet property="imageView" destination="Efr-IK-1Aa" id="Iid-oP-EWX"/>
                     </connections>
                 </viewController>

@@ -31,6 +31,7 @@ extension AuthorsCollectionViewController {
         detailsController.titleText = author.title
         detailsController.descriptionText = author.description
         detailsController.type = SearchEnum.author
+        detailsController.isFavorite = true
         self.navigationController?.pushViewController(detailsController, animated: true)
     }
     
