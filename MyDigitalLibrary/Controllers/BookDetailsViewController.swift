@@ -15,6 +15,7 @@ class BookDetailsViewController: UIViewController {
     var onRemoveBook: (() -> Void)?
     var onSaveImage: ((_ image: Data) -> Void)?
     var onSaveTrama: ((_ trama: String?) -> Void)?
+    var onSeeAuthor: (() -> Void)?
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -95,5 +96,11 @@ class BookDetailsViewController: UIViewController {
         toggleHeartButton(navigationItem.rightBarButtonItem, enabled: isFavorite)
         onRemoveBook?()
     }
+    
+    @IBAction func onSeeAuthorTap(_ sender: Any) {
+        print("onSeeAuthorTap()")
+        onSeeAuthor?()
+    }
+    
     
 }

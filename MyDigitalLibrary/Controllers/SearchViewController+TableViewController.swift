@@ -36,6 +36,11 @@ extension SearchViewController {
                 book.key = selectedResult.descriptionKey
                 book.coverKey = selectedResult.imageKey
                 book.title = selectedResult.title
+                let author = Author(context: self.dataController.viewContext)
+                author.key = selectedResult.bookAuthorKey
+                author.photoKey = selectedResult.bookAuthorKey
+                author.name = selectedResult.bookAuthorName
+                book.author = author
                 try? self.dataController.viewContext.save()
                 debugPrint("New book saved successfully")
             case SearchEnum.author:

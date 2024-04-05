@@ -46,6 +46,10 @@ extension BooksTabViewController {
             try? self?.dataController.viewContext.save()
             debugPrint("Book trama saved successfully")
         }
+        bookDetailsController.onSeeAuthor = { [weak self] in
+            print("onSeeAuthor()")
+            self?.navigateToAuthor(book: book)
+        }
         
         self.navigationController?.pushViewController(bookDetailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -57,5 +61,35 @@ extension BooksTabViewController {
         try? dataController.viewContext.save()
         debugPrint("Book removed from favourites successfully")
     }
+    
+    func navigateToAuthor(book: Book) {
+        let authorDetailsController = self.storyboard!.instantiateViewController(withIdentifier: "AuthorDetailsViewController") as! AuthorDetailsViewController
+        authorDetailsController.author = book.author
+        authorDetailsController.showFavourite = false // FIXME to check if author is in favourites
+        authorDetailsController.onRemoveAuthor = { [weak self] in
+            print("onRemoveAuthor()")
+            self?.deleteAuthor(itemToDelete: book.author!)
+            self?.navigationController?.popViewController(animated: true)
+        }
+        authorDetailsController.onSavePhoto = { [weak self] imageData in
+            print("onSavePhoto()")
+            book.author?.photo = imageData
+            try? self?.dataController.viewContext.save()
+            debugPrint("Author photo saved successfully")
+        }
+        authorDetailsController.onSaveBio = { [weak self] bio in
+            print("onSaveBio()")
+            book.author?.bio = bio
+            try? self?.dataController.viewContext.save()
+            debugPrint("Author bio saved successfully")
+        }
+        self.navigationController?.pushViewController(authorDetailsController, animated: true)
+    }
 
+    func deleteAuthor(itemToDelete: Author) {
+        print("Remove author from favourites")
+        dataController.viewContext.delete(itemToDelete)
+        try? dataController.viewContext.save()
+        debugPrint("Author removed from favourites successfully")
+    }
 }

@@ -11,6 +11,7 @@ import CoreData
 class AuthorDetailsViewController: UIViewController {
     
     var author: Author!
+    var showFavourite: Bool = true
     var isFavorite: Bool = true
     var onRemoveAuthor: (() -> Void)?
     var onSavePhoto: ((_ image: Data) -> Void)?
@@ -28,8 +29,11 @@ class AuthorDetailsViewController: UIViewController {
         print("AuthorDetailsViewController viewDidLoad()")
 
         navigationItem.title = author.name
-        let heartImage = isFavorite ? selectedImage : deselectedImage
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: heartImage, style: .plain, target: self, action: #selector(toggleAuthorFavorite))
+        
+        if (showFavourite) {
+            let heartImage = isFavorite ? selectedImage : deselectedImage
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: heartImage, style: .plain, target: self, action: #selector(toggleAuthorFavorite))
+        }
 
         bioActivityIndicator.startAnimating()
 
@@ -81,10 +85,12 @@ class AuthorDetailsViewController: UIViewController {
     
 
     func toggleHeartButton(_ button: UIBarButtonItem?, enabled: Bool) {
-        if enabled {
-            navigationItem.rightBarButtonItem?.image = selectedImage
-        } else {
-            navigationItem.rightBarButtonItem?.image = deselectedImage
+        if (showFavourite) {
+            if enabled {
+                navigationItem.rightBarButtonItem?.image = selectedImage
+            } else {
+                navigationItem.rightBarButtonItem?.image = deselectedImage
+            }
         }
     }
 

@@ -12,4 +12,6 @@ struct SearchResult {
     let description: String
     let imageKey: String
     let descriptionKey: String
+    let bookAuthorKey: String?
+    let bookAuthorName: String?
 }
