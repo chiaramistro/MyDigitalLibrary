@@ -46,8 +46,8 @@
             filePath = "MyDigitalLibrary/Controllers/AuthorsCollectionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -64,6 +64,130 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
+            landmarkName = "scene(_:willConnectTo:options:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "46BD3A52-EB16-41C1-868D-B56FC78159C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyDigitalLibrary/Controllers/BooksTabViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "BooksTabViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "46BD3A52-EB16-41C1-868D-B56FC78159C9 - ff319627162ba9ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyDigitalLibrary.BooksTabViewController.dataController.getter : Swift.Optional&lt;MyDigitalLibrary.DataController&gt;"
+                  moduleName = "MyDigitalLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/T7/Corsi/Swift/iOS%20Developer%20(Udacity)/MyDigitalLibrary/MyDigitalLibrary/Controllers/BooksTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "46BD3A52-EB16-41C1-868D-B56FC78159C9 - f3e788ce76e65df3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyDigitalLibrary.BooksTabViewController.dataController.setter : Swift.Optional&lt;MyDigitalLibrary.DataController&gt;"
+                  moduleName = "MyDigitalLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/T7/Corsi/Swift/iOS%20Developer%20(Udacity)/MyDigitalLibrary/MyDigitalLibrary/Controllers/BooksTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "46BD3A52-EB16-41C1-868D-B56FC78159C9 - 3c5602c2f4d9aee2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyDigitalLibrary.BooksTabViewController.dataController.modify : Swift.Optional&lt;MyDigitalLibrary.DataController&gt;"
+                  moduleName = "MyDigitalLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/T7/Corsi/Swift/iOS%20Developer%20(Udacity)/MyDigitalLibrary/MyDigitalLibrary/Controllers/BooksTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "46BD3A52-EB16-41C1-868D-B56FC78159C9 - c71e7010b534c939"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyDigitalLibrary.BooksTabViewController.dataController.modify : Swift.Optional&lt;MyDigitalLibrary.DataController&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "MyDigitalLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/T7/Corsi/Swift/iOS%20Developer%20(Udacity)/MyDigitalLibrary/MyDigitalLibrary/Controllers/BooksTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "46BD3A52-EB16-41C1-868D-B56FC78159C9 - b75b5ff0548bde0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyDigitalLibrary.BooksTabViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MyDigitalLibrary.BooksTabViewController"
+                  moduleName = "MyDigitalLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/T7/Corsi/Swift/iOS%20Developer%20(Udacity)/MyDigitalLibrary/MyDigitalLibrary/Controllers/BooksTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "46BD3A52-EB16-41C1-868D-B56FC78159C9 - c346870dbd6f5594"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyDigitalLibrary.BooksTabViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MyDigitalLibrary.BooksTabViewController&gt;"
+                  moduleName = "MyDigitalLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/T7/Corsi/Swift/iOS%20Developer%20(Udacity)/MyDigitalLibrary/MyDigitalLibrary/Controllers/BooksTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "160">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FFDF35C1-54D2-41D7-B2D8-024ED92D927C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyDigitalLibrary/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "scene(_:willConnectTo:options:)"
             landmarkType = "7">
          </BreakpointContent>
