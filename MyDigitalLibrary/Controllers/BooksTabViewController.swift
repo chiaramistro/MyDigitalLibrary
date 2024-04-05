@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
-class BooksTabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BooksTabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
-    var books: [LibraryDetails] = []
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var dataController: DataController!
+    var fetchedResultsController: NSFetchedResultsController<Book>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +26,26 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBook))
         navigationItem.title = "My Digital Library"
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         
         
+        setupFetchedResultsController()
+        
+    }
+    
+    fileprivate func setupFetchedResultsController() {
+        let fetchRequest: NSFetchRequest<Book> = Book.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "key", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "books")
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch could not be performed: \(error.localizedDescription)")
+        }
     }
     
     func setLoading(isLoading: Bool) {

@@ -10,14 +10,13 @@ import UIKit
 extension BooksTabViewController {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("tableView numberOfRowsInSection: \(books.count)")
-        return books.count
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("tableView cellForRowAt \(indexPath)")
         
-        let book = books[(indexPath as NSIndexPath).row]
+        let book = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath)
 
         // Configure cell

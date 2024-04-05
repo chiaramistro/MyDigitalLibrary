@@ -26,9 +26,10 @@
 		E9C466862BBBEC4400D0833A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C466852BBBEC4400D0833A /* SceneDelegate.swift */; };
 		E9C466882BBBEC4400D0833A /* BooksTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C466872BBBEC4400D0833A /* BooksTabViewController.swift */; };
 		E9C4668B2BBBEC4400D0833A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C466892BBBEC4400D0833A /* Main.storyboard */; };
-		E9C4668E2BBBEC4400D0833A /* MyDigitalLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9C4668C2BBBEC4400D0833A /* MyDigitalLibrary.xcdatamodeld */; };
 		E9C466902BBBEC4500D0833A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C4668F2BBBEC4500D0833A /* Assets.xcassets */; };
 		E9C466932BBBEC4500D0833A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C466912BBBEC4500D0833A /* LaunchScreen.storyboard */; };
+		E9DFA48C2BBC559900E7109A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DFA48B2BBC559900E7109A /* DataController.swift */; };
+		E9FF66362BBFE17B00E0BDF9 /* MyDigitalLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9FF66342BBFE17B00E0BDF9 /* MyDigitalLibrary.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,10 +53,11 @@
 		E9C466852BBBEC4400D0833A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E9C466872BBBEC4400D0833A /* BooksTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTabViewController.swift; sourceTree = "<group>"; };
 		E9C4668A2BBBEC4400D0833A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E9C4668D2BBBEC4400D0833A /* MyDigitalLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDigitalLibrary.xcdatamodel; sourceTree = "<group>"; };
 		E9C4668F2BBBEC4500D0833A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9C466922BBBEC4500D0833A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9C466942BBBEC4500D0833A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9DFA48B2BBC559900E7109A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		E9FF66352BBFE17B00E0BDF9 /* MyDigitalLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDigitalLibrary.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +168,8 @@
 		E9C4669E2BBBECA500D0833A /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				E9C4668C2BBBEC4400D0833A /* MyDigitalLibrary.xcdatamodeld */,
+				E9FF66342BBFE17B00E0BDF9 /* MyDigitalLibrary.xcdatamodeld */,
+				E9DFA48B2BBC559900E7109A /* DataController.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -250,7 +253,7 @@
 				E96FE2D32BBC409C00082221 /* AuthorsCollectionViewController.swift in Sources */,
 				E9C466842BBBEC4400D0833A /* AppDelegate.swift in Sources */,
 				E96FE2D52BBC446C00082221 /* SearchViewController.swift in Sources */,
-				E9C4668E2BBBEC4400D0833A /* MyDigitalLibrary.xcdatamodeld in Sources */,
+				E9DFA48C2BBC559900E7109A /* DataController.swift in Sources */,
 				E9A460662BBEBECB00088C63 /* SearchViewController+SearchBarDelegate.swift in Sources */,
 				E90F47812BBD9E350093F386 /* LibraryDetails.swift in Sources */,
 				E96FE2CC2BBC35C100082221 /* OpenLibraryClient.swift in Sources */,
@@ -260,6 +263,7 @@
 				E98A2A3B2BBD656600055489 /* LibraryDetailsViewController.swift in Sources */,
 				E98A2A3D2BBD67FE00055489 /* AuthorSearchResponse.swift in Sources */,
 				E96FE2CF2BBC365700082221 /* BookSearchResponse.swift in Sources */,
+				E9FF66362BBFE17B00E0BDF9 /* MyDigitalLibrary.xcdatamodeld in Sources */,
 				E9A4606C2BBEEEAD00088C63 /* AuthorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,12 +484,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E9C4668C2BBBEC4400D0833A /* MyDigitalLibrary.xcdatamodeld */ = {
+		E9FF66342BBFE17B00E0BDF9 /* MyDigitalLibrary.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E9C4668D2BBBEC4400D0833A /* MyDigitalLibrary.xcdatamodel */,
+				E9FF66352BBFE17B00E0BDF9 /* MyDigitalLibrary.xcdatamodel */,
 			);
-			currentVersion = E9C4668D2BBBEC4400D0833A /* MyDigitalLibrary.xcdatamodel */;
+			currentVersion = E9FF66352BBFE17B00E0BDF9 /* MyDigitalLibrary.xcdatamodel */;
 			path = MyDigitalLibrary.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

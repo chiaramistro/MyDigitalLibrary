@@ -11,7 +11,7 @@ import Foundation
 struct BookSearchResponse: Codable {
     let numFound, start: Int
     let numFoundExact: Bool
-    let docs: [Book]
+    let docs: [BookResponse]
     let eventsResponseNumFound: Int
     let q: String
     let offset: Int?
@@ -24,7 +24,7 @@ struct BookSearchResponse: Codable {
 }
 
 // MARK: - Book
-struct Book: Codable {
+struct BookResponse: Codable {
     let authorAlternativeName, authorKey, authorName, contributor: [String]?
     let coverEditionKey: String?
     let coverI: Int?

@@ -13,6 +13,7 @@
         <scene sceneID="n7f-fz-3J8">
             <objects>
                 <tabBarController id="gmk-Be-eqK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oFn-et-KMU"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b45-Qh-MfR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
