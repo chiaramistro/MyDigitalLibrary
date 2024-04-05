@@ -237,8 +237,8 @@
                                     <constraint firstAttribute="height" constant="300" id="fSM-pP-fcc"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nq3-0p-8yz">
-                                <rect key="frame" x="8" y="411" width="377" height="407"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nq3-0p-8yz">
+                                <rect key="frame" x="8" y="411" width="377" height="122"/>
                                 <string key="text">Description of the book Description of the bookDescription of the book Description of the bookDescription of the book Description of the bookDescription of the book Description of the bookDescription of the book Description of the book</string>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -248,7 +248,7 @@
                                 <rect key="frame" x="186.66666666666666" y="411" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fp-PC-kLM">
-                                <rect key="frame" x="143" y="791" width="107" height="35"/>
+                                <rect key="frame" x="143" y="549" width="107" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="See author"/>
                                 <connections>
@@ -259,17 +259,16 @@
                         <viewLayoutGuide key="safeArea" id="eHa-PC-MyA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eHa-PC-MyA" firstAttribute="bottom" secondItem="nq3-0p-8yz" secondAttribute="bottom" id="0Ue-Vc-zJD"/>
+                            <constraint firstAttribute="trailing" secondItem="nq3-0p-8yz" secondAttribute="trailing" constant="8" id="0ov-El-TrR"/>
                             <constraint firstItem="tzK-Cl-2M0" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="8Zy-5G-M1X"/>
-                            <constraint firstItem="6fp-PC-kLM" firstAttribute="bottom" secondItem="eHa-PC-MyA" secondAttribute="bottom" constant="8" id="GP6-aU-1gP"/>
                             <constraint firstItem="Efr-IK-1Aa" firstAttribute="top" secondItem="eHa-PC-MyA" secondAttribute="top" id="Ho0-np-j8R"/>
                             <constraint firstItem="tzK-Cl-2M0" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="8" id="N8w-eK-2eu"/>
+                            <constraint firstItem="nq3-0p-8yz" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="8" id="P6L-g5-Ixe"/>
                             <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="Efr-IK-1Aa" secondAttribute="trailing" constant="8" id="XGP-WG-AWw"/>
-                            <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="nq3-0p-8yz" secondAttribute="trailing" constant="8" id="mA3-FY-jaL"/>
-                            <constraint firstItem="nq3-0p-8yz" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="8" id="pNM-ym-evX"/>
-                            <constraint firstItem="nq3-0p-8yz" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="qWM-Fq-2Yx"/>
+                            <constraint firstItem="6fp-PC-kLM" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="jYf-ey-2Yg"/>
+                            <constraint firstItem="nq3-0p-8yz" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="mcp-7V-dOb"/>
                             <constraint firstItem="Efr-IK-1Aa" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="qr8-bs-2zJ"/>
-                            <constraint firstItem="6fp-PC-kLM" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="vku-BP-yuc"/>
+                            <constraint firstItem="6fp-PC-kLM" firstAttribute="top" secondItem="nq3-0p-8yz" secondAttribute="bottom" constant="16" id="szF-5S-BD9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zDV-ZY-jQc"/>
@@ -376,8 +375,8 @@
                                     <constraint firstAttribute="height" constant="300" id="LzJ-Li-pzb"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio of the author Bio of the author Bio of the author" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCz-fl-lWc">
-                                <rect key="frame" x="8" y="411" width="377" height="407"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio of the author Bio of the author Bio of the author" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCz-fl-lWc">
+                                <rect key="frame" x="8" y="411" width="361" height="40.666666666666686"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -389,15 +388,15 @@
                         <viewLayoutGuide key="safeArea" id="tDt-6c-ixi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aCz-fl-lWc" firstAttribute="leading" secondItem="tDt-6c-ixi" secondAttribute="leading" constant="8" id="24Q-Pa-sb8"/>
                             <constraint firstItem="hmi-gy-rM3" firstAttribute="leading" secondItem="tDt-6c-ixi" secondAttribute="leading" constant="8" id="9hv-jr-TZj"/>
                             <constraint firstItem="0Xd-5I-NJA" firstAttribute="top" secondItem="hmi-gy-rM3" secondAttribute="bottom" constant="8" id="BG7-6i-D5B"/>
                             <constraint firstItem="hmi-gy-rM3" firstAttribute="top" secondItem="tDt-6c-ixi" secondAttribute="top" id="PmX-Kg-7Zn"/>
+                            <constraint firstItem="aCz-fl-lWc" firstAttribute="leading" secondItem="tDt-6c-ixi" secondAttribute="leading" constant="8" id="TeF-fF-L12"/>
                             <constraint firstItem="0Xd-5I-NJA" firstAttribute="centerX" secondItem="33z-HZ-hHR" secondAttribute="centerX" id="V4X-Du-34E"/>
-                            <constraint firstItem="tDt-6c-ixi" firstAttribute="trailing" secondItem="aCz-fl-lWc" secondAttribute="trailing" constant="8" id="lqb-bu-F8Q"/>
-                            <constraint firstItem="tDt-6c-ixi" firstAttribute="bottom" secondItem="aCz-fl-lWc" secondAttribute="bottom" id="m4f-Sr-hPZ"/>
+                            <constraint firstItem="aCz-fl-lWc" firstAttribute="top" secondItem="hmi-gy-rM3" secondAttribute="bottom" constant="8" id="daG-Va-4dK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aCz-fl-lWc" secondAttribute="trailing" constant="8" id="nhe-z7-UPQ"/>
+                            <constraint firstItem="tDt-6c-ixi" firstAttribute="bottom" secondItem="aCz-fl-lWc" secondAttribute="bottom" constant="8" id="onK-l5-dzI"/>
                             <constraint firstItem="tDt-6c-ixi" firstAttribute="trailing" secondItem="hmi-gy-rM3" secondAttribute="trailing" constant="8" id="qEE-FR-oRT"/>
-                            <constraint firstItem="aCz-fl-lWc" firstAttribute="top" secondItem="hmi-gy-rM3" secondAttribute="bottom" constant="8" id="x17-xP-JIK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5bD-i3-rJo"/>
