@@ -36,6 +36,7 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidAppear(_ animated: Bool) {
         print("BooksTabViewController viewDidAppear()")
+        setupFetchedResultsController()
         tableView.reloadData()
     }
     

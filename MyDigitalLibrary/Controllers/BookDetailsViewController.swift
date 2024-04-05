@@ -12,15 +12,14 @@ class BookDetailsViewController: UIViewController, NSFetchedResultsControllerDel
 
     var book: Book!
     var isFavorite: Bool = true
+    var onRemoveBook: (() -> Void)?
     
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var descriptionActivityIndicator: UIActivityIndicatorView!
-
-    var dataController: DataController!
-
+    
     var deselectedImage = UIImage(systemName: "heart")
     var selectedImage = UIImage(systemName: "heart.fill")
     
@@ -40,7 +39,7 @@ class BookDetailsViewController: UIViewController, NSFetchedResultsControllerDel
         } else {
             OpenLibraryClient.getWorkInfo(workId: book.key ?? "") { result, error in
                 if let result = result {
-                    print("getWorkInfo() success \(result)")
+                    print("getWorkInfo() success")
                     self.descriptionActivityIndicator.stopAnimating()
                     self.descriptionLabel.text = result.description?.value ?? "No description available"
                 } else {
@@ -58,18 +57,19 @@ class BookDetailsViewController: UIViewController, NSFetchedResultsControllerDel
     func getBookCover() {
         imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
         if let bookCover = book.cover {
-            self.imageView.image = UIImage(data: book.cover ?? Data())
+            self.imageView.image = UIImage(data: bookCover)
         } else {
-//            OpenLibraryClient.getCoverImage(id: book.key, type: type) { image, error in
-//                if let image = image {
-//                    print("getBookCoverImage() success \(image)")
-//                    self.imageView.image = UIImage(data: image)
-//                } else {
-//                    print("getBookCoverImage() error \(error?.localizedDescription)")
+            OpenLibraryClient.getCoverImage(id: book.coverKey ?? "", type: SearchEnum.book) { image, error in
+                print("getBookCover() success")
+                if let image = image {
+                    print("getBookCoverImage() success \(image)")
+                    self.imageView.image = UIImage(data: image)
+                } else {
+                    print("getBookCoverImage() error \(error?.localizedDescription)")
                     self.imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
-//                }
-//
-//            }
+                }
+            }
+    
         }
     }
 
@@ -85,25 +85,7 @@ class BookDetailsViewController: UIViewController, NSFetchedResultsControllerDel
         print("toggleBookFavorites()")
         isFavorite = !isFavorite
         toggleHeartButton(navigationItem.rightBarButtonItem, enabled: isFavorite)
-//        if (isFavorite) {
-//            print("Add book to favourites")
-//            let book = Book(context: dataController.viewContext)
-//            book.key = book.key
-//            book.title = titleText
-//            book.trama = descriptionLabel.text
-//            book.cover = imageView.image?.pngData()
-//            // FIXME add author data too
-//    //        let author = Author(context: dataController.viewContext)
-//    //        author.key = ""
-//    //        author.name = ""
-//    //        author.bio = ""
-//    //        book.author = author
-//            try? dataController.viewContext.save()
-//            debugPrint("New book saved successfully")
-//            navigationController?.popToRootViewController(animated: true)
-//        } else {
-//            print("Remove book from favourites")
-//        }
+        onRemoveBook?()
     }
     
 }

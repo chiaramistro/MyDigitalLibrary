@@ -56,6 +56,7 @@ class OpenLibraryClient {
     }
         
     class func getCoverImage(id: String, type: SearchEnum, completion: @escaping (Data?, Error?) -> Void) {
+        print("Get image URL: \(Endpoints.cover(id, type).url)")
         let download = URLSession.shared.dataTask(with: Endpoints.cover(id, type).url) { data, response, error in
              if let data = data {
                  DispatchQueue.main.async {
