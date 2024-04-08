@@ -59,4 +59,27 @@ extension AuthorsCollectionViewController {
         try? dataController.viewContext.save()
         debugPrint("Author removed from favourites successfully")
     }
+    
+    func createRowLayout() -> UICollectionViewLayout {
+        // Create item with size
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        // Create a group with 3 items each
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.33))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
+        // Create section with group
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        // Define spacing between two items
+        let spacing = CGFloat(8)
+        group.interItemSpacing = .fixed(spacing)
+        section.interGroupSpacing = spacing
+        
+        // Embed section in layout and return it to collection view
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
 }

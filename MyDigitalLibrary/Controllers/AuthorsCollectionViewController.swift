@@ -25,6 +25,7 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addAuthor))
         navigationItem.title = "My Digital Library"
         
+        collectionView.collectionViewLayout = createRowLayout()
         collectionView.dataSource = self
         collectionView.delegate = self
         
