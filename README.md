@@ -6,8 +6,9 @@ This app allows users to save their favorite books and authors for easy access. 
 1. [Home](#home)
 2. [Search](#search)
 3. [Details](#details)
-4. [Key Functionalities](#Functionalities)
-4. [App Build](#Build)
+4. [Key Functionalities](#functionalities)
+4. [App Build](#build)
+4. [Other](#other)
 
 ## Home
 The "Home" page is composed by two tabs where the user can view and manage their favorite books and authors. There are two dedicated tabs:
@@ -36,5 +37,9 @@ The key functionalities that make our app unique are:
 Clone the repo in your local machine and build the app as it is. No special configurations or API keys are needed. 
 
 
+## Other
+Credits to [Icons8]("https://icons8.com") for the [Love Book icon]("https://icons8.com/icon/pXJTVvE8w6Ub/love-book").
+
 Thank you for using MyDigitalLibrary! Have fun organizing and discovering your favorite books and authors with our app. 
 Happy reading! 📚
+
