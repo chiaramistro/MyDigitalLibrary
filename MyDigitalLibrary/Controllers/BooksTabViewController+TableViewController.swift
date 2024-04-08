@@ -66,7 +66,7 @@ extension BooksTabViewController {
     func navigateToAuthor(book: Book) {
         let authorDetailsController = self.storyboard!.instantiateViewController(withIdentifier: "AuthorDetailsViewController") as! AuthorDetailsViewController
         authorDetailsController.author = book.author
-        authorDetailsController.showFavourite = false // FIXME to check if author is in favourites
+        authorDetailsController.showFavourite = true
         authorDetailsController.onRemoveAuthor = { [weak self] in
             print("onRemoveAuthor()")
             self?.deleteAuthor(itemToDelete: book.author!)

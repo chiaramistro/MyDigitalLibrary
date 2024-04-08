@@ -11,4 +11,6 @@ class AuthorCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var authorLabel: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
 }

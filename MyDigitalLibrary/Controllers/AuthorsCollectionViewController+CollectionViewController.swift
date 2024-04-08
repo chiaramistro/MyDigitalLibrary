@@ -19,6 +19,11 @@ extension AuthorsCollectionViewController {
         let author = fetchedResultsController.object(at: indexPath)
         
         cell.authorLabel.text = author.name
+        if let authorPhoto = author.photo {
+            cell.imageView.image = UIImage(data: authorPhoto)
+        } else {
+            cell.imageView.image = UIImage(named: "image-placeholder")
+        }
         
         return cell
     }

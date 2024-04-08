@@ -31,18 +31,9 @@ extension SearchViewController {
             switch (self.type as! SearchEnum) {
             case SearchEnum.book:
                 print("Add book to favourites")
-                let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
-                let book = Book(context: self.dataController.viewContext)
-                book.key = selectedResult.descriptionKey
-                book.coverKey = selectedResult.imageKey
-                book.title = selectedResult.title
-                let author = Author(context: self.dataController.viewContext)
-                author.key = selectedResult.bookAuthorKey
-                author.photoKey = selectedResult.bookAuthorKey
-                author.name = selectedResult.bookAuthorName
-                book.author = author
-                try? self.dataController.viewContext.save()
-                debugPrint("New book saved successfully")
+                self.alertAuthor { includeAuthor in
+                    self.addBook(includeAuthor: includeAuthor, indexPath: indexPath)
+                }
             case SearchEnum.author:
                 print("Add author to favourites")
                 let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
@@ -60,6 +51,38 @@ extension SearchViewController {
         favorite.backgroundColor = .red
 
         return [favorite]
+    }
+    
+    func alertAuthor(completion: @escaping (Bool) -> Void) {
+        //If we want to print something on the screen, we use UIAlertController:
+        let alert = UIAlertController(title: "Excellent!", message: "Do you want to add the author of this book to favourites?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (alertToCancel) in
+            completion(false)
+        }))
+
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
+            completion(true)
+        }))
+        
+        self.present(alert, animated: true)
+    }
+    
+    func addBook(includeAuthor: Bool, indexPath: IndexPath) {
+        let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
+        let book = Book(context: self.dataController.viewContext)
+        book.key = selectedResult.descriptionKey
+        book.coverKey = selectedResult.imageKey
+        book.title = selectedResult.title
+        if (includeAuthor) {
+            let author = Author(context: self.dataController.viewContext)
+            author.key = selectedResult.bookAuthorKey
+            author.photoKey = selectedResult.bookAuthorKey
+            author.name = selectedResult.bookAuthorName
+            book.author = author
+        }
+        try? self.dataController.viewContext.save()
+        debugPrint("New book saved successfully")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

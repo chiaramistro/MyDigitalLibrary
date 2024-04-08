@@ -17,6 +17,8 @@ class BookDetailsViewController: UIViewController {
     var onSaveTrama: ((_ trama: String?) -> Void)?
     var onSeeAuthor: (() -> Void)?
     
+    @IBOutlet weak var onSeeAuthorButton: UIButton!
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -35,6 +37,11 @@ class BookDetailsViewController: UIViewController {
         
         descriptionActivityIndicator.startAnimating()
         
+        onSeeAuthorButton.isHidden = true
+        if let bookAuthor = book.author {
+            debugPrint("Book DOES have author")
+            onSeeAuthorButton.isHidden = false
+        }
         // FIXME description does not fill space + does not scroll
         if let bookTrama = book.trama {
             debugPrint("Book DOES have trama")
