@@ -43,6 +43,7 @@ extension SearchViewController {
                 author.photoKey = selectedResult.imageKey
                 author.name = selectedResult.title
                 try? self.dataController.viewContext.save()
+                self.showToast(message: "New author saved successfully")
                 debugPrint("New author saved successfully")
             default:
                 debugPrint("Unknown type")
@@ -88,6 +89,7 @@ extension SearchViewController {
             }
         }
         try? self.dataController.viewContext.save()
+        self.showToast(message: "New book saved successfully")
         debugPrint("New book saved successfully")
     }
     

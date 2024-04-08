@@ -73,6 +73,7 @@ extension AuthorsCollectionViewController {
         print("Remove author from favourites")
         dataController.viewContext.delete(itemToDelete)
         try? dataController.viewContext.save()
+        self.showToast(message: "Author removed from favourites successfully")
         debugPrint("Author removed from favourites successfully")
     }
     
