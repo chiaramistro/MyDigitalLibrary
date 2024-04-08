@@ -20,9 +20,25 @@ extension AuthorsCollectionViewController {
         
         cell.authorLabel.text = author.name
         if let authorPhoto = author.photo {
+            debugPrint("Author DOES have photo")
             cell.imageView.image = UIImage(data: authorPhoto)
         } else {
+            debugPrint("Author DOES NOT have photo")
+            // Try to fetch author photo
             cell.imageView.image = UIImage(named: "image-placeholder")
+            OpenLibraryClient.getCoverImage(id: author.photoKey ?? "", type: SearchEnum.author) { image, error in
+                print("getCoverImage() success")
+                if let image = image {
+                    print("getCoverImage() success \(image)")
+                    cell.imageView.image = UIImage(data: image)
+                    author.photo = image
+                    try? self.dataController.viewContext.save()
+                    debugPrint("Author photo saved successfully")
+                } else {
+                    print("getCoverImage() error \(error?.localizedDescription)")
+                    cell.imageView.image =  UIImage(named: "image-placeholder")
+                }
+            }
         }
         
         return cell
