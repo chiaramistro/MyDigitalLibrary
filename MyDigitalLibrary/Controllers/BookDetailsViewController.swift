@@ -51,14 +51,14 @@ class BookDetailsViewController: UIViewController {
             debugPrint("Book DOES NOT have trama")
             OpenLibraryClient.getWorkInfo(workId: book.key ?? "") { result, error in
                 if let result = result {
-                    print("getWorkInfo() success")
                     self.descriptionActivityIndicator.stopAnimating()
                     self.descriptionLabel.text = result.description?.value ?? "No description available"
                     self.onSaveTrama?(result.description?.value)
                 } else {
-                    print("getWorkInfo() error \(error?.localizedDescription)")
+                    debugPrint("Error getting book details: \(error?.localizedDescription)")
                     self.descriptionActivityIndicator.stopAnimating()
                     self.descriptionLabel.text = "No description available"
+                    self.showErrorAlert(message: "An error occurred retrieving the book description, try again later")
                 }
                 
             }
@@ -75,14 +75,14 @@ class BookDetailsViewController: UIViewController {
         } else {
             debugPrint("Book DOES NOT have cover")
             OpenLibraryClient.getCoverImage(id: book.coverKey ?? "", type: SearchEnum.book) { image, error in
-                print("getBookCover() success")
                 if let image = image {
-                    print("getBookCoverImage() success \(image)")
+                    debugPrint("getBookCoverImage() success \(image)")
                     self.imageView.image = UIImage(data: image)
                     self.onSaveImage?(image)
                 } else {
-                    print("getBookCoverImage() error \(error?.localizedDescription)")
+                    debugPrint("Error getting book cover: \(error?.localizedDescription)")
                     self.imageView.image = UIImage(named: "image-placeholder")
+                    self.showErrorAlert(message: "An error occurred retrieving the book cover, try again later")
                 }
             }
     

@@ -14,7 +14,6 @@ extension BooksTabViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("tableView cellForRowAt \(indexPath)")
         
         let book = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath)

@@ -16,7 +16,6 @@ extension SearchViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("tableView cellForRowAt \(indexPath)")
         
         let result = searchResults[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath)
@@ -111,7 +110,7 @@ extension SearchViewController {
                 return result.first
             }
         } catch let error as NSError {
-             print("Could not fetch author \(error), \(error.userInfo)")
+            debugPrint("Could not fetch favourite author \(error.localizedDescription)")
             return nil
         }
         
