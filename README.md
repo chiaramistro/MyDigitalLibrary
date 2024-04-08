@@ -6,7 +6,8 @@ This app allows users to save their favorite books and authors for easy access. 
 1. [Home](#home)
 2. [Search](#search)
 3. [Details](#details)
-4. [Functionalities](#Functionalities)
+4. [Key Functionalities](#Functionalities)
+4. [App Build](#Build)
 
 ## Home
 The "Home" page is composed by two tabs where the user can view and manage their favorite books and authors. There are two dedicated tabs:
@@ -24,6 +25,15 @@ The **"Details" page** allows users to view additional information about a selec
 - for the authors, author's photo and biography. 
 Users can access this page by tapping on a book or author from their favorites list.
 From this page it is possible to remove an item from your favorites list by tapping on the heart icon on top right corner of the book or author you wish to remove.
+
+## Functionalities
+The key functionalities that make our app unique are:
+- **User Interface**: multiple screens to view the content of the app, such as the list of favourites and the details of a book or author;
+- **Networking**: [OpenLibrary.org]("https://openlibrary.org/") suite, which offers a long list of books and authors to search from. No API key is needed;
+- **Persistent State**: usage of CoreData to save your lists of favourites inside your device, so that you can access them anytime.
+
+## Build
+Clone the repo in your local machine and build the app as it is. No special configurations or API keys are needed. 
 
 
 Thank you for using MyDigitalLibrary! Have fun organizing and discovering your favorite books and authors with our app. 
