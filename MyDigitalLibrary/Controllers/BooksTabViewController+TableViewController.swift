@@ -14,7 +14,6 @@ extension BooksTabViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("tableView cellForRowAt \(indexPath)")
         
         let book = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath)
@@ -60,6 +59,7 @@ extension BooksTabViewController {
         print("Remove book from favourites")
         dataController.viewContext.delete(itemToDelete)
         try? dataController.viewContext.save()
+        self.showToast(message: "Book removed from favourites successfully")
         debugPrint("Book removed from favourites successfully")
     }
     
@@ -91,6 +91,7 @@ extension BooksTabViewController {
         print("Remove author from favourites")
         dataController.viewContext.delete(itemToDelete)
         try? dataController.viewContext.save()
+        self.showToast(message: "Author removed from favourites successfully")
         debugPrint("Author removed from favourites successfully")
     }
 }

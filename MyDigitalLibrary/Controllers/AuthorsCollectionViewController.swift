@@ -25,6 +25,7 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addAuthor))
         navigationItem.title = "My Digital Library"
         
+        collectionView.collectionViewLayout = createRowLayout()
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -47,7 +48,8 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            fatalError("The fetch could not be performed: \(error.localizedDescription)")
+            fatalError("The fetch of authors could not be performed: \(error.localizedDescription)")
+            self.showErrorAlert(message: "An error occurred retrieving your favourite authors, try again later")
         }
     }
     

@@ -20,9 +20,25 @@ extension AuthorsCollectionViewController {
         
         cell.authorLabel.text = author.name
         if let authorPhoto = author.photo {
+            debugPrint("Author DOES have photo")
             cell.imageView.image = UIImage(data: authorPhoto)
         } else {
+            debugPrint("Author DOES NOT have photo")
+            // Try to fetch author photo
             cell.imageView.image = UIImage(named: "image-placeholder")
+            OpenLibraryClient.getCoverImage(id: author.photoKey ?? "", type: SearchEnum.author) { image, error in
+                print("getCoverImage() success")
+                if let image = image {
+                    print("getCoverImage() success \(image)")
+                    cell.imageView.image = UIImage(data: image)
+                    author.photo = image
+                    try? self.dataController.viewContext.save()
+                    debugPrint("Author photo saved successfully")
+                } else {
+                    debugPrint("Error no author's photo available: \(error?.localizedDescription)")
+                    cell.imageView.image =  UIImage(named: "image-placeholder")
+                }
+            }
         }
         
         return cell
@@ -57,6 +73,30 @@ extension AuthorsCollectionViewController {
         print("Remove author from favourites")
         dataController.viewContext.delete(itemToDelete)
         try? dataController.viewContext.save()
+        self.showToast(message: "Author removed from favourites successfully")
         debugPrint("Author removed from favourites successfully")
+    }
+    
+    func createRowLayout() -> UICollectionViewLayout {
+        // Create item with size
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        // Create a group with 3 items each
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.33))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
+        // Create section with group
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        // Define spacing between two items
+        let spacing = CGFloat(8)
+        group.interItemSpacing = .fixed(spacing)
+        section.interGroupSpacing = spacing
+        
+        // Embed section in layout and return it to collection view
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 }

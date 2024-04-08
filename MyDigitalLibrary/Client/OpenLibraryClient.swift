@@ -11,6 +11,7 @@ class OpenLibraryClient {
  
     enum Endpoints {
         static let base = "https://openlibrary.org"
+        static let emptyImageBytes = 43
         
         case searchBook(String)
         case searchAuthor(String)
@@ -59,8 +60,14 @@ class OpenLibraryClient {
         print("Get image URL: \(Endpoints.cover(id, type).url)")
         let download = URLSession.shared.dataTask(with: Endpoints.cover(id, type).url) { data, response, error in
              if let data = data {
-                 DispatchQueue.main.async {
-                     completion(data, nil)
+                 if data.count > Endpoints.emptyImageBytes {
+                     DispatchQueue.main.async {
+                         completion(data, nil)
+                     }
+                 } else {
+                     DispatchQueue.main.async {
+                         completion(nil, AppError.runtimeError("Empty data return by website"))
+                     }
                  }
              } else {
                  DispatchQueue.main.async {
@@ -126,4 +133,9 @@ class OpenLibraryClient {
         task.resume()
         return task
     }
+    
+}
+
+enum AppError: Error {
+    case runtimeError(String)
 }

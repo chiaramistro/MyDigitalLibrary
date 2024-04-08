@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension SearchViewController {
 
@@ -15,7 +16,6 @@ extension SearchViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("tableView cellForRowAt \(indexPath)")
         
         let result = searchResults[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath)
@@ -42,6 +42,7 @@ extension SearchViewController {
                 author.photoKey = selectedResult.imageKey
                 author.name = selectedResult.title
                 try? self.dataController.viewContext.save()
+                self.showToast(message: "New author saved successfully")
                 debugPrint("New author saved successfully")
             default:
                 debugPrint("Unknown type")
@@ -76,14 +77,44 @@ extension SearchViewController {
         book.title = selectedResult.title
         book.author = selectedResult.bookAuthorName
         if (includeAuthor) {
-            let author = Author(context: self.dataController.viewContext)
-            author.key = selectedResult.bookAuthorKey
-            author.photoKey = selectedResult.bookAuthorKey
-            author.name = selectedResult.bookAuthorName
-            book.authorData = author
+            let authorFound = self.checkForAuthor(authorKey: selectedResult.bookAuthorKey ?? "")
+            if let authorFound = authorFound {
+                book.author = authorFound
+            } else {
+                let author = Author(context: self.dataController.viewContext)
+                author.key = selectedResult.bookAuthorKey
+                author.photoKey = selectedResult.bookAuthorKey
+                author.name = selectedResult.bookAuthorName
+                book.author = author
+            }
         }
         try? self.dataController.viewContext.save()
+        self.showToast(message: "New book saved successfully")
         debugPrint("New book saved successfully")
+    }
+    
+    func checkForAuthor(authorKey: String) -> Author? {
+        let fetchRequest: NSFetchRequest<Author> = Author.fetchRequest()
+        let predicate = NSPredicate(format: "key == %@", authorKey)
+        fetchRequest.predicate = predicate
+        let sortDescriptor = NSSortDescriptor(key: "key", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.fetchLimit = 1
+        
+        do {
+            let result: [Author] = try self.dataController.viewContext.fetch(fetchRequest)
+            if (result.isEmpty) { // no matching object
+                print("Author is NOT already present")
+                return nil
+            } else { // at least one matching object exists
+                print("Author is already present")
+                return result.first
+            }
+        } catch let error as NSError {
+            debugPrint("Could not fetch favourite author \(error.localizedDescription)")
+            return nil
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
