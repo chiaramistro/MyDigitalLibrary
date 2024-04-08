@@ -61,7 +61,7 @@ class BookDetailsViewController: UIViewController {
     }
     
     func getBookCover() {
-        imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
+        imageView.image = UIImage(named: "image-placeholder")
         if let bookCover = book.cover {
             debugPrint("Book DOES have cover")
             self.imageView.image = UIImage(data: bookCover)
@@ -75,7 +75,7 @@ class BookDetailsViewController: UIViewController {
                     self.onSaveImage?(image)
                 } else {
                     print("getBookCoverImage() error \(error?.localizedDescription)")
-                    self.imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
+                    self.imageView.image = UIImage(named: "image-placeholder")
                 }
             }
     

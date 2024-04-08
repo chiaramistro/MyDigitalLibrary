@@ -62,7 +62,7 @@ class AuthorDetailsViewController: UIViewController {
     }
     
     func getAuthorPhoto() {
-        imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
+        imageView.image =  UIImage(named: "image-placeholder")
         if let authorPhoto = author.photo {
             debugPrint("Author DOES have photo")
             imageView.image = UIImage(data: authorPhoto)
@@ -76,7 +76,7 @@ class AuthorDetailsViewController: UIViewController {
                     self.onSavePhoto?(image)
                 } else {
                     print("getCoverImage() error \(error?.localizedDescription)")
-                    self.imageView.image = UIImage(systemName: "pin") // FIXME add grey image placeholder
+                    self.imageView.image =  UIImage(named: "image-placeholder")
                 }
             }
     
