@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension BooksTabViewController {
 
@@ -46,13 +47,48 @@ extension BooksTabViewController {
             try? self?.dataController.viewContext.save()
             debugPrint("Book trama saved successfully")
         }
-        bookDetailsController.onSeeAuthor = { [weak self] in
-            print("onSeeAuthor()")
-            self?.navigateToAuthor(book: book)
-        }
+        bookDetailsController.onSeeAuthor = canUserSeeBookAuthor(book: book)
+        
         
         self.navigationController?.pushViewController(bookDetailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func canUserSeeBookAuthor(book: Book) -> (() -> Void)? {
+        let isAuthorFavourite = self.isAuthorFavourite(authorName: book.author ?? "")
+        if let favouriteAuthor = isAuthorFavourite {
+            debugPrint("Author is one of the favourites")
+            return { [weak self] in
+                debugPrint("onSeeAuthor()")
+                self?.navigateToAuthor(book: book)
+            }
+        }
+       
+        debugPrint("Author is not one of the favourites, do NOT return function")
+        return nil
+    }
+    
+    func isAuthorFavourite(authorName: String) -> Author? {
+        let fetchRequest: NSFetchRequest<Author> = Author.fetchRequest()
+        let predicate = NSPredicate(format: "name == %@", authorName)
+        fetchRequest.predicate = predicate
+        let sortDescriptor = NSSortDescriptor(key: "key", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.fetchLimit = 1
+        
+        do {
+            let result: [Author] = try self.dataController.viewContext.fetch(fetchRequest)
+            if (result.isEmpty) { // no matching object
+                print("Author is NOT favourite")
+                return nil
+            } else { // at least one matching object exists
+                print("Author is favourite")
+                return result.first
+            }
+        } catch let error as NSError {
+            debugPrint("Could not fetch favourite author \(error.localizedDescription)")
+            return nil
+        }
     }
     
     func deleteBook(itemToDelete: Book) {

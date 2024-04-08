@@ -79,13 +79,13 @@ extension SearchViewController {
         if (includeAuthor) {
             let authorFound = self.checkForAuthor(authorKey: selectedResult.bookAuthorKey ?? "")
             if let authorFound = authorFound {
-                book.author = authorFound
+                book.authorData = authorFound
             } else {
                 let author = Author(context: self.dataController.viewContext)
                 author.key = selectedResult.bookAuthorKey
                 author.photoKey = selectedResult.bookAuthorKey
                 author.name = selectedResult.bookAuthorName
-                book.author = author
+                book.authorData = author
             }
         }
         try? self.dataController.viewContext.save()
