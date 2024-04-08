@@ -10,15 +10,16 @@ import Foundation
 // MARK: - AuthorResponse
 struct AuthorResponse: Codable {
     let name, title: String?
+    let key: String?
     let links: [AuthorLink]?
-    let bio: String?
+    let bio: BioType?
     let type: AuthorTypeKey?
     let alternateNames: [String]?
     let photos: [Int]?
     let wikipedia: String?
     let personalName, entityType, birthDate: String?
     let sourceRecords: [String]?
-    let key, fullerName: String?
+    let fullerName: String?
     let remoteIDS: AuthorRemoteIDS?
     let latestRevision, revision: Int?
     let created, lastModified: AuthorTypeKey?
@@ -37,6 +38,49 @@ struct AuthorResponse: Codable {
         case latestRevision = "latest_revision"
         case revision, created
         case lastModified = "last_modified"
+    }
+}
+
+extension AuthorResponse {
+    func displayBio() -> String {
+        guard let bio = bio else {
+            return "Bio not available"
+        }
+        
+        switch bio {
+        case .string(let string):
+            return string
+        case .authorTypeKey(let authorTypeKey):
+            return authorTypeKey.value ?? "-"
+        }
+    }
+}
+
+// MARK: - BioType
+enum BioType: Codable {
+    case string(String)
+    case authorTypeKey(AuthorTypeKey)
+    
+    init(from decoder: Decoder) throws {
+        if let string = try? String(from: decoder) {
+            self = .string(string)
+            return
+        }
+        if let authorTypeKey = try? AuthorTypeKey(from: decoder) {
+            self = .authorTypeKey(authorTypeKey)
+            return
+        }
+        throw DecodingError.dataCorruptedError(in: try decoder.unkeyedContainer(), debugDescription: "Unable to decode BioType")
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .string(let string):
+            try container.encode(string)
+        case .authorTypeKey(let authorTypeKey):
+            try container.encode(authorTypeKey)
+        }
     }
 }
 

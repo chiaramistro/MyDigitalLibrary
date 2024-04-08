@@ -48,8 +48,8 @@ class AuthorDetailsViewController: UIViewController {
                     if let result = result {
                         print("getAuthorDetails() success \(result)")
                         self.bioActivityIndicator.stopAnimating()
-                        self.authorBioLabel.text = result.bio ?? "No description available"
-                        self.onSaveBio?(result.bio)
+                        self.authorBioLabel.text = result.displayBio() ?? "No description available"
+                        self.onSaveBio?(result.displayBio())
                     } else {
                         print("getAuthorDetails() error \(error?.localizedDescription)")
                         self.bioActivityIndicator.stopAnimating()
