@@ -21,7 +21,7 @@ extension BooksTabViewController {
 
         // Configure cell
         cell.textLabel?.text = book.title
-        cell.detailTextLabel?.text = book.author?.name ?? "-"
+        cell.detailTextLabel?.text = book.author ?? "-"
 
         return cell
     }
@@ -65,22 +65,22 @@ extension BooksTabViewController {
     
     func navigateToAuthor(book: Book) {
         let authorDetailsController = self.storyboard!.instantiateViewController(withIdentifier: "AuthorDetailsViewController") as! AuthorDetailsViewController
-        authorDetailsController.author = book.author
+        authorDetailsController.author = book.authorData
         authorDetailsController.showFavourite = true
         authorDetailsController.onRemoveAuthor = { [weak self] in
             print("onRemoveAuthor()")
-            self?.deleteAuthor(itemToDelete: book.author!)
+            self?.deleteAuthor(itemToDelete: book.authorData!)
             self?.navigationController?.popViewController(animated: true)
         }
         authorDetailsController.onSavePhoto = { [weak self] imageData in
             print("onSavePhoto()")
-            book.author?.photo = imageData
+            book.authorData?.photo = imageData
             try? self?.dataController.viewContext.save()
             debugPrint("Author photo saved successfully")
         }
         authorDetailsController.onSaveBio = { [weak self] bio in
             print("onSaveBio()")
-            book.author?.bio = bio
+            book.authorData?.bio = bio
             try? self?.dataController.viewContext.save()
             debugPrint("Author bio saved successfully")
         }

@@ -38,8 +38,8 @@ class BookDetailsViewController: UIViewController {
         descriptionActivityIndicator.startAnimating()
         
         onSeeAuthorButton.isHidden = true
-        if let bookAuthor = book.author {
-            debugPrint("Book DOES have author")
+        if let bookAuthor = book.authorData {
+            debugPrint("Book DOES have author data")
             onSeeAuthorButton.isHidden = false
         }
         // FIXME description does not fill space + does not scroll
