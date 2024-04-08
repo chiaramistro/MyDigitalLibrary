@@ -21,6 +21,7 @@ extension BooksTabViewController {
 
         // Configure cell
         cell.textLabel?.text = book.title
+        cell.detailTextLabel?.text = book.author?.name ?? "-"
 
         return cell
     }
