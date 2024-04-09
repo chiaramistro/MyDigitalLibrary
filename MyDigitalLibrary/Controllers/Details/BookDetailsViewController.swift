@@ -66,8 +66,8 @@ class BookDetailsViewController: UIViewController {
                 
                 if let result = result {
                     self.descriptionActivityIndicator.stopAnimating()
-                    self.descriptionLabel.text = result.description?.value ?? "No description available"
-                    self.onSaveTrama?(result.description?.value)
+                    self.descriptionLabel.text = result.displayTrama()
+                    self.onSaveTrama?(result.displayTrama())
                 } else {
                     debugPrint("Error getting book details: \(error?.localizedDescription)")
                     self.handleBookTramaError()
