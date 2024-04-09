@@ -60,9 +60,7 @@ class BookDetailsViewController: UIViewController {
             OpenLibraryClient.getWorkInfo(workId: book.key ?? "") { result, error in
                 if let error = error {
                     debugPrint("Error getting book details: \(error.localizedDescription)")
-                    self.descriptionActivityIndicator.stopAnimating()
-                    self.descriptionLabel.text = "No description available"
-                    self.showErrorAlert(message: "An error occurred retrieving the book description, try again later")
+                    self.handleBookTramaError()
                     return
                 }
                 
@@ -72,13 +70,17 @@ class BookDetailsViewController: UIViewController {
                     self.onSaveTrama?(result.description?.value)
                 } else {
                     debugPrint("Error getting book details: \(error?.localizedDescription)")
-                    self.descriptionActivityIndicator.stopAnimating()
-                    self.descriptionLabel.text = "No description available"
-                    self.showErrorAlert(message: "An error occurred retrieving the book description, try again later")
+                    self.handleBookTramaError()
                 }
                 
             }
         }
+    }
+    
+    func handleBookTramaError() {
+        self.descriptionActivityIndicator.stopAnimating()
+        self.descriptionLabel.text = "No description available"
+        self.showErrorAlert(message: "An error occurred retrieving the book description, try again later")
     }
     
     func getBookCover() {
@@ -91,8 +93,7 @@ class BookDetailsViewController: UIViewController {
             OpenLibraryClient.getCoverImage(id: book.coverKey ?? "", type: SearchEnum.book) { image, error in
                 if let error = error {
                     debugPrint("Error getting book cover: \(error.localizedDescription)")
-                    self.imageView.image = UIImage(named: "image-placeholder")
-                    self.showErrorAlert(message: "An error occurred retrieving the book cover, try again later")
+                    self.handleBookCoverError()
                     return
                 }
                 
@@ -102,12 +103,16 @@ class BookDetailsViewController: UIViewController {
                     self.onSaveImage?(image)
                 } else {
                     debugPrint("Error getting book cover: \(error?.localizedDescription)")
-                    self.imageView.image = UIImage(named: "image-placeholder")
-                    self.showErrorAlert(message: "An error occurred retrieving the book cover, try again later")
+                    self.handleBookCoverError()
                 }
             }
     
         }
+    }
+    
+    func handleBookCoverError() {
+        self.imageView.image = UIImage(named: "image-placeholder")
+        self.showErrorAlert(message: "An error occurred retrieving the book cover, try again later")
     }
 
     func toggleHeartButton(_ button: UIBarButtonItem?, enabled: Bool) {

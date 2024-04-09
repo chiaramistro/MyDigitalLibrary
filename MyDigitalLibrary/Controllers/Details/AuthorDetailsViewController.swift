@@ -52,9 +52,7 @@ class AuthorDetailsViewController: UIViewController {
             OpenLibraryClient.getAuthorDetails(authorId: author.key ?? "") { result, error in
                 if let error = error {
                     debugPrint("Error getting author details: \(error.localizedDescription)")
-                    self.bioActivityIndicator.stopAnimating()
-                    self.authorBioLabel.text = "No description available"
-                    self.showErrorAlert(message: "An error occurred retrieving the author's biography, try again later")
+                    self.handleAuthorBioError()
                     return
                 }
                 
@@ -65,12 +63,16 @@ class AuthorDetailsViewController: UIViewController {
                     self.onSaveBio?(result.displayBio())
                 } else {
                     debugPrint("Error getting author details: \(error?.localizedDescription)")
-                    self.bioActivityIndicator.stopAnimating()
-                    self.authorBioLabel.text = "No description available"
-                    self.showErrorAlert(message: "An error occurred retrieving the author's biography, try again later")
+                    self.handleAuthorBioError()
                 }
             }
         }
+    }
+    
+    func handleAuthorBioError() {
+        self.bioActivityIndicator.stopAnimating()
+        self.authorBioLabel.text = "No description available"
+        self.showErrorAlert(message: "An error occurred retrieving the author's biography, try again later")
     }
     
     func getAuthorPhoto() {
@@ -83,8 +85,7 @@ class AuthorDetailsViewController: UIViewController {
             OpenLibraryClient.getCoverImage(id: author.photoKey ?? "", type: SearchEnum.author) { image, error in
                 if let error = error {
                     debugPrint("Error getting author photo: \(error.localizedDescription)")
-                    self.imageView.image =  UIImage(named: "image-placeholder")
-                    self.showErrorAlert(message: "An error occurred retrieving the author's photo, try again later")
+                    self.handleAuthorPhotoError()
                     return
                 }
                 
@@ -94,15 +95,18 @@ class AuthorDetailsViewController: UIViewController {
                     self.onSavePhoto?(image)
                 } else {
                     debugPrint("Error getting author photo: \(error?.localizedDescription)")
-                    self.imageView.image =  UIImage(named: "image-placeholder")
-                    self.showErrorAlert(message: "An error occurred retrieving the author's photo, try again later")
+                    self.handleAuthorPhotoError()
                 }
             }
     
         }
     }
     
-
+    func handleAuthorPhotoError() {
+        self.imageView.image =  UIImage(named: "image-placeholder")
+        self.showErrorAlert(message: "An error occurred retrieving the author's photo, try again later")
+    }
+    
     func toggleHeartButton(_ button: UIBarButtonItem?, enabled: Bool) {
         if (showFavourite) {
             if enabled {
