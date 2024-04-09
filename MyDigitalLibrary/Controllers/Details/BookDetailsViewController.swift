@@ -53,6 +53,14 @@ class BookDetailsViewController: UIViewController {
         } else {
             debugPrint("Book DOES NOT have trama")
             OpenLibraryClient.getWorkInfo(workId: book.key ?? "") { result, error in
+                if let error = error {
+                    debugPrint("Error getting book details: \(error.localizedDescription)")
+                    self.descriptionActivityIndicator.stopAnimating()
+                    self.descriptionLabel.text = "No description available"
+                    self.showErrorAlert(message: "An error occurred retrieving the book description, try again later")
+                    return
+                }
+                
                 if let result = result {
                     self.descriptionActivityIndicator.stopAnimating()
                     self.descriptionLabel.text = result.description?.value ?? "No description available"
@@ -78,6 +86,13 @@ class BookDetailsViewController: UIViewController {
         } else {
             debugPrint("Book DOES NOT have cover")
             OpenLibraryClient.getCoverImage(id: book.coverKey ?? "", type: SearchEnum.book) { image, error in
+                if let error = error {
+                    debugPrint("Error getting book cover: \(error.localizedDescription)")
+                    self.imageView.image = UIImage(named: "image-placeholder")
+                    self.showErrorAlert(message: "An error occurred retrieving the book cover, try again later")
+                    return
+                }
+                
                 if let image = image {
                     debugPrint("getBookCoverImage() success \(image)")
                     self.imageView.image = UIImage(data: image)

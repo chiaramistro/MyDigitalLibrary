@@ -27,7 +27,13 @@ extension AuthorsCollectionViewController {
             // Try to fetch author photo
             cell.imageView.image = UIImage(named: "image-placeholder")
             OpenLibraryClient.getCoverImage(id: author.photoKey ?? "", type: SearchEnum.author) { image, error in
-                print("getCoverImage() success")
+                print("getCoverImage() returned")
+                if let error = error {
+                    debugPrint("Error in getCoverImage() \(error.localizedDescription)")
+                    cell.imageView.image =  UIImage(named: "image-placeholder")
+                    return
+                }
+                
                 if let image = image {
                     print("getCoverImage() success \(image)")
                     cell.imageView.image = UIImage(data: image)

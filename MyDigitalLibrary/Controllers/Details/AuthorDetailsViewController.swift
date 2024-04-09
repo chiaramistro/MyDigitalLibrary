@@ -45,18 +45,26 @@ class AuthorDetailsViewController: UIViewController {
         } else {
             debugPrint("Author DOES NOT have bio")
             OpenLibraryClient.getAuthorDetails(authorId: author.key ?? "") { result, error in
-                    if let result = result {
-                        debugPrint("getAuthorDetails() success \(result)")
-                        self.bioActivityIndicator.stopAnimating()
-                        self.authorBioLabel.text = result.displayBio() ?? "No description available"
-                        self.onSaveBio?(result.displayBio())
-                    } else {
-                        debugPrint("Error getting author details: \(error?.localizedDescription)")
-                        self.bioActivityIndicator.stopAnimating()
-                        self.authorBioLabel.text = "No description available"
-                        self.showErrorAlert(message: "An error occurred retrieving the author's biography, try again later")
-                    }
+                if let error = error {
+                    debugPrint("Error getting author details: \(error.localizedDescription)")
+                    self.bioActivityIndicator.stopAnimating()
+                    self.authorBioLabel.text = "No description available"
+                    self.showErrorAlert(message: "An error occurred retrieving the author's biography, try again later")
+                    return
                 }
+                
+                if let result = result {
+                    debugPrint("getAuthorDetails() success \(result)")
+                    self.bioActivityIndicator.stopAnimating()
+                    self.authorBioLabel.text = result.displayBio() ?? "No description available"
+                    self.onSaveBio?(result.displayBio())
+                } else {
+                    debugPrint("Error getting author details: \(error?.localizedDescription)")
+                    self.bioActivityIndicator.stopAnimating()
+                    self.authorBioLabel.text = "No description available"
+                    self.showErrorAlert(message: "An error occurred retrieving the author's biography, try again later")
+                }
+            }
         }
 
         getAuthorPhoto()
@@ -70,6 +78,13 @@ class AuthorDetailsViewController: UIViewController {
         } else {
             debugPrint("Author DOES NOT have photo")
             OpenLibraryClient.getCoverImage(id: author.photoKey ?? "", type: SearchEnum.author) { image, error in
+                if let error = error {
+                    debugPrint("Error getting author photo: \(error.localizedDescription)")
+                    self.imageView.image =  UIImage(named: "image-placeholder")
+                    self.showErrorAlert(message: "An error occurred retrieving the author's photo, try again later")
+                    return
+                }
+                
                 if let image = image {
                     debugPrint("getCoverImage() success \(image)")
                     self.imageView.image = UIImage(data: image)
