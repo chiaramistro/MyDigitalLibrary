@@ -48,6 +48,8 @@ class BookDetailsViewController: UIViewController {
         getBookCover()
     }
     
+    // MARK: - Book details fetching
+    
     func getBookTrama() {
         if let bookTrama = book.trama {
             debugPrint("Book DOES have trama")
@@ -111,6 +113,8 @@ class BookDetailsViewController: UIViewController {
         self.imageView.image = UIImage(named: "image-placeholder")
         self.showErrorAlert(message: "An error occurred retrieving the book cover, try again later")
     }
+    
+    // MARK: - Book details actions
 
     func toggleHeartButton(_ button: UIBarButtonItem?, enabled: Bool) {
         if enabled {

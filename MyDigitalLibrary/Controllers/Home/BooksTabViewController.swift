@@ -45,6 +45,8 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.reloadData()
     }
     
+    // MARK: - Fetched results controller
+    
     fileprivate func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<Book> = Book.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "key", ascending: false)
@@ -59,6 +61,8 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
             self.showErrorAlert(message: "An error occurred retrieving your favourite books, try again later")
         }
     }
+    
+    // MARK: - Add book navigation
     
     @objc func addBook() {
         let searchController = self.storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController

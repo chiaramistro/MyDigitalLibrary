@@ -9,6 +9,8 @@ import UIKit
 
 extension AuthorsCollectionViewController {
     
+    // MARK: - Favourite authors collection view
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchedResultsController.fetchedObjects?.count ?? 0
     }
@@ -69,6 +71,8 @@ extension AuthorsCollectionViewController {
         self.navigationController?.pushViewController(authorDetailsController, animated: true)
     }
     
+    // MARK: - Collection view actions methods
+    
     func deleteAuthor(itemToDelete: Author) {
         debugPrint("Remove author from favourites")
         dataController.viewContext.delete(itemToDelete)
@@ -76,6 +80,8 @@ extension AuthorsCollectionViewController {
         self.showToast(message: "Author removed from favourites successfully")
         debugPrint("Author removed from favourites successfully")
     }
+    
+    // MARK: - Collection view layout
     
     func createRowLayout() -> UICollectionViewLayout {
         // Create item with size

@@ -9,6 +9,8 @@ import UIKit
 
 extension UIViewController {
     
+    // MARK: - Toast message utility
+    
     func showToast(message: String) {
         let toastWidth = self.view.frame.size.width-16
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - (toastWidth/2), y: self.view.safeAreaInsets.top, width: toastWidth, height: 35))
@@ -26,6 +28,8 @@ extension UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
+    
+    // MARK: - Alert message utility
     
     func showErrorAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)

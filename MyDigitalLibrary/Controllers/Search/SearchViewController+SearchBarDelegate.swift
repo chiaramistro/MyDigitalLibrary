@@ -9,6 +9,8 @@ import UIKit
 
 extension SearchViewController: UISearchBarDelegate {
     
+    // MARK: - Search bar methods
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         currentSearchTask?.cancel()
         self.searchResults = [] // reset

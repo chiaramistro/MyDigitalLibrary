@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 
 extension BooksTabViewController {
+    
+    // MARK: - Favourite books table view
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.fetchedObjects?.count ?? 0
@@ -49,6 +51,8 @@ extension BooksTabViewController {
         self.navigationController?.pushViewController(bookDetailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    // MARK: - Table view actions methods
     
     func canUserSeeBookAuthor(book: Book) -> (() -> Void)? {
         let isAuthorFavourite = self.isAuthorFavourite(authorName: book.author ?? "")

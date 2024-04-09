@@ -45,6 +45,8 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
         }
     }
     
+    // MARK: - Fetched results controller
+    
     fileprivate func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<Author> = Author.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "key", ascending: false)
@@ -59,6 +61,8 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
             self.showErrorAlert(message: "An error occurred retrieving your favourite authors, try again later")
         }
     }
+    
+    // MARK: - Add author navigation
     
     @objc func addAuthor() {
         let searchController = self.storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController

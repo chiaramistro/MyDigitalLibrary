@@ -40,6 +40,8 @@ class AuthorDetailsViewController: UIViewController {
         getAuthorPhoto()
     }
     
+    // MARK: - Author details fetching
+    
     func getAuthorBio() {
         if let authorBio = author.bio {
             debugPrint("Author DOES have bio")
@@ -102,6 +104,8 @@ class AuthorDetailsViewController: UIViewController {
         self.imageView.image =  UIImage(named: "image-placeholder")
         self.showErrorAlert(message: "An error occurred retrieving the author's photo, try again later")
     }
+    
+    // MARK: - Author details actions
     
     func toggleHeartButton(_ button: UIBarButtonItem?, enabled: Bool) {
         if (showFavourite) {

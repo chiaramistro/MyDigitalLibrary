@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 
 extension SearchViewController {
+    
+    // MARK: - Search bar results table
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
@@ -56,6 +58,8 @@ extension SearchViewController {
 
         return [favorite]
     }
+    
+    // MARK: - Table view actions methods
     
     func alertAuthor(completion: @escaping (Bool) -> Void) {
         //If we want to print something on the screen, we use UIAlertController:

@@ -9,6 +9,8 @@ import Foundation
 
 class OpenLibraryClient {
  
+    // MARK: - Client endpoints
+    
     enum Endpoints {
         static let base = "https://openlibrary.org"
         static let emptyImageBytes = 43
@@ -34,6 +36,8 @@ class OpenLibraryClient {
         }
     }
     
+    // MARK: - GET author details request
+    
     class func getAuthorDetails(authorId: String, completion: @escaping (AuthorResponse?, Error?) -> Void) -> URLSessionDataTask  {
         let task = taskForGETRequest(url: Endpoints.authorDetails(authorId).url, responseType: AuthorResponse.self) { response, error in
             if let response = response {
@@ -45,6 +49,8 @@ class OpenLibraryClient {
         return task
     }
         
+    // MARK: - GET book details request
+    
     class func getWorkInfo(workId: String, completion: @escaping (WorkResponse?, Error?) -> Void) -> URLSessionDataTask  {
         let task = taskForGETRequest(url: Endpoints.works(workId).url, responseType: WorkResponse.self) { response, error in
             if let response = response {
@@ -55,6 +61,8 @@ class OpenLibraryClient {
         }
         return task
     }
+    
+    // MARK: - GET book cover or author photo request
         
     class func getCoverImage(id: String, type: SearchEnum, completion: @escaping (Data?, Error?) -> Void) {
         debugPrint("Get image URL: \(Endpoints.cover(id, type).url)")
@@ -78,6 +86,8 @@ class OpenLibraryClient {
          download.resume()
      }
     
+    // MARK: - GET search for a book
+    
     class func searchBook(bookTitle: String, completion: @escaping ([BookResponse], Error?) -> Void) -> URLSessionDataTask  {
         let task = taskForGETRequest(url: Endpoints.searchBook(bookTitle).url, responseType: BookSearchResponse.self) { response, error in
             if let response = response {
@@ -88,6 +98,8 @@ class OpenLibraryClient {
         }
         return task
     }
+    
+    // MARK: - GET search for an author
     
     class func searchAuthor(authorName: String, completion: @escaping ([AuthorBookResponse], Error?) -> Void) -> URLSessionDataTask  {
         let task = taskForGETRequest(url: Endpoints.searchAuthor(authorName).url, responseType: AuthorSearchResponse.self) { response, error in
@@ -131,6 +143,8 @@ class OpenLibraryClient {
     }
     
 }
+
+// MARK: - Generic App error
 
 enum AppError: Error {
     case runtimeError(String)
