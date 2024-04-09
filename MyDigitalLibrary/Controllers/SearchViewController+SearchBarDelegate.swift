@@ -35,6 +35,8 @@ extension SearchViewController: UISearchBarDelegate {
         print("searchAuthors()")
         currentSearchTask = OpenLibraryClient.searchAuthor(authorName: searchText) { result, error in
             print("searchAuthor() success")
+            // FIXME error handling
+            
             if (result.isEmpty) {
                 // FIXME show empty state
                 return
@@ -56,6 +58,8 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBooks(searchText: String) {
         print("searchBook()")
         currentSearchTask = OpenLibraryClient.searchBook(bookTitle: searchText) { result, error in
+            // FIXME error handling
+            
             //print("searchBook() result: \(result)")
             print("searchBook() success")
             if (result.isEmpty) {

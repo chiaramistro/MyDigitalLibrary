@@ -12,7 +12,7 @@ This app allows users to save their favorite books and authors for easy access. 
 
 ## Home
 The "Home" page is composed by two tabs where the user can view and manage their favorite books and authors. There are two dedicated tabs:
-- **Books Tab**: user can see their favourite books. Each entry displays the title of the book.
+- **Books Tab**: user can see their favourite books. Each entry displays the title and the author of the book.
 - **Author Tab**: user can see their favourite books. Each entry displays the name and a photo of the author.
 
 From this page users can add (using the plus "+" button on the top right corner) or remove their entries (from their details view) from their favorites list. 
@@ -43,3 +43,11 @@ Credits to [Icons8]("https://icons8.com") for the [Love Book icon]("https://icon
 Thank you for using MyDigitalLibrary! Have fun organizing and discovering your favorite books and authors with our app. 
 Happy reading! 📚
 
+
+
+COSE DA FARE:
+- FIXME aggiungere popup errori - The app displays an alert view if the network connection fails.
+
+- NO? - TODO add author from details view (solo autore, non libro)
+- TODO The app clearly indicates network activity, displaying activity indicators and/or progress bars when appropriate.
+- TODO aggiungere una riga di dettaglio (sottotitolo) anche nei dettagli libro per far vedere l'autore?

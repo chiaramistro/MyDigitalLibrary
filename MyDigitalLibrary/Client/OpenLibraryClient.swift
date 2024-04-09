@@ -13,6 +13,8 @@ class OpenLibraryClient {
         static let base = "https://openlibrary.org"
         static let emptyImageBytes = 43
         
+        // FIXME with dots on url it breaks, handle with %%
+        
         case searchBook(String)
         case searchAuthor(String)
         case cover(String, SearchEnum)

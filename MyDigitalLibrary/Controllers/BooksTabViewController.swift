@@ -29,6 +29,8 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         
+        //setLoading(isLoading: true)
+        //setLoading(isLoading: false)
         
         setupFetchedResultsController()
         

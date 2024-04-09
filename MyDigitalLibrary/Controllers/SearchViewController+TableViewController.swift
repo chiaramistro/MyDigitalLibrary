@@ -119,6 +119,16 @@ extension SearchViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tableView didSelectRowAt() \(indexPath)")
+//         FIMXE instead of click, we swipe to add entry to favourites
+        
+//        let detailsController = self.storyboard!.instantiateViewController(withIdentifier: "LibraryDetailsViewController") as! LibraryDetailsViewController
+//        let searchItem = searchResults[(indexPath as NSIndexPath).row]
+//        detailsController.key = searchItem.key
+//        detailsController.imageId = searchItem.imageId
+//        detailsController.titleText = searchItem.title
+//        detailsController.type = type
+//        self.navigationController?.pushViewController(detailsController, animated: true)
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

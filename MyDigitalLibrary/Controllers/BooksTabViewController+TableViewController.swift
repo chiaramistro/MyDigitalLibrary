@@ -50,6 +50,12 @@ extension BooksTabViewController {
         bookDetailsController.onSeeAuthor = canUserSeeBookAuthor(book: book)
         
         
+//        bookDetailsController.onAdd = { [weak self] in
+//            if let indexPath = self?.tableView.indexPathForSelectedRow {
+//                self?.addBook(at: indexPath)
+////                self?.navigationController?.popViewController(animated: true)
+//            }
+//        }
         self.navigationController?.pushViewController(bookDetailsController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
