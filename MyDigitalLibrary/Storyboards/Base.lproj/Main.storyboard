@@ -194,6 +194,12 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="F4m-2S-P4C">
                                 <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results found!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n0g-wm-3gM">
+                                <rect key="frame" x="-8" y="93" width="393" height="666"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AYX-SW-iWV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -212,6 +218,7 @@
                     <navigationItem key="navigationItem" id="l75-aw-ghN"/>
                     <connections>
                         <outlet property="activityIndicator" destination="F4m-2S-P4C" id="1YY-OB-grd"/>
+                        <outlet property="emptyResultsLabel" destination="n0g-wm-3gM" id="48a-4M-6EY"/>
                         <outlet property="searchBar" destination="wQr-ew-Fm4" id="hi5-E3-eEJ"/>
                         <outlet property="tableView" destination="qz5-Xa-7UG" id="Lbx-bl-MUM"/>
                     </connections>

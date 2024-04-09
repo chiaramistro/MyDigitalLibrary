@@ -16,6 +16,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     var searchResults: [SearchResult] = []
     
+    @IBOutlet weak var emptyResultsLabel: UILabel!
+    
     @IBOutlet weak var searchBar: UISearchBar!
     var currentSearchTask: URLSessionDataTask?
     
@@ -25,6 +27,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         print("SearchViewController viewDidLoad()")
         print("SearchViewController viewDidLoad() type \(type)")
         
+        emptyResultsLabel.isHidden = true
+        
         navigationItem.title = "Search"
         
         tableView.dataSource = self
@@ -33,6 +37,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func setLoading(isLoading: Bool) {
         print("setLoading(\(isLoading))")
+        emptyResultsLabel.isHidden = true
         isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
+    
 }

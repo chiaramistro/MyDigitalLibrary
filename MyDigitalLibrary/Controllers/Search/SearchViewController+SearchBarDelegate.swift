@@ -11,10 +11,12 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         currentSearchTask?.cancel()
+        self.searchResults = [] // reset
+        
         if (searchText.isEmpty) {
             debugPrint("No search text")
             searchBar.endEditing(true)
-            searchResults = []
+            setLoading(isLoading: false)
             tableView.reloadData()
             return
         }
@@ -33,11 +35,21 @@ extension SearchViewController: UISearchBarDelegate {
     func searchAuthors(searchText: String) {
         print("searchAuthors()")
         currentSearchTask = OpenLibraryClient.searchAuthor(authorName: searchText) { result, error in
-            print("searchAuthor() success")
-            // FIXME error handling
+            print("searchAuthor() returned")
+            if let error = error {
+                if (error.localizedDescription.contains("cancelled")) {
+                    debugPrint("Author search terminated by user")
+                    return
+                }
+                debugPrint("Error in searchAuthor() \(error.localizedDescription)")
+                self.setLoading(isLoading: false)
+                self.showErrorAlert(message: "Some error occurred while searching for authors, please try again")
+                return
+            }
             
             if (result.isEmpty) {
-                // FIXME show empty state
+                self.reloadSearchResults()
+                self.emptyResultsLabel.isHidden = false
                 return
             }
             
@@ -52,11 +64,21 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBooks(searchText: String) {
         print("searchBook()")
         currentSearchTask = OpenLibraryClient.searchBook(bookTitle: searchText) { result, error in
-            // FIXME error handling
+            print("searchBook() returned")
+            if let error = error {
+                if (error.localizedDescription.contains("cancelled")) {
+                    debugPrint("Book search terminated by user")
+                    return
+                }
+                debugPrint("Error in searchBook() \(error.localizedDescription)")
+                self.setLoading(isLoading: false)
+                self.showErrorAlert(message: "Some error occurred while searching for books, please try again")
+                return
+            }
             
-            print("searchBook() success")
             if (result.isEmpty) {
-                // FIXME show empty state
+                self.reloadSearchResults()
+                self.emptyResultsLabel.isHidden = false
                 return
             }
             
