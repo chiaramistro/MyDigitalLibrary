@@ -30,6 +30,8 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
         collectionView.delegate = self
         
         setupFetchedResultsController()
+        
+        // FIXME show empty state
     }
     
     override func viewDidAppear(_ animated: Bool) {

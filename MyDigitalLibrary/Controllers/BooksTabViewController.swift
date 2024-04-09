@@ -29,11 +29,9 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         
-        //setLoading(isLoading: true)
-        //setLoading(isLoading: false)
-        
         setupFetchedResultsController()
         
+        // FIXME show empty state
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,11 +53,6 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
             fatalError("The fetch of books could not be performed: \(error.localizedDescription)")
             self.showErrorAlert(message: "An error occurred retrieving your favourite books, try again later")
         }
-    }
-    
-    func setLoading(isLoading: Bool) {
-        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
-        navigationItem.rightBarButtonItem?.isEnabled = !isLoading
     }
     
     @objc func addBook() {

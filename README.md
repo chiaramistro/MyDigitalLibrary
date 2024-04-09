@@ -42,12 +42,3 @@ Credits to [Icons8]("https://icons8.com") for the [Love Book icon]("https://icon
 
 Thank you for using MyDigitalLibrary! Have fun organizing and discovering your favorite books and authors with our app. 
 Happy reading! 📚
-
-
-
-COSE DA FARE:
-- FIXME aggiungere popup errori - The app displays an alert view if the network connection fails.
-
-- NO? - TODO add author from details view (solo autore, non libro)
-- TODO The app clearly indicates network activity, displaying activity indicators and/or progress bars when appropriate.
-- TODO aggiungere una riga di dettaglio (sottotitolo) anche nei dettagli libro per far vedere l'autore?

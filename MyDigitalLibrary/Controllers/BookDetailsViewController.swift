@@ -45,11 +45,6 @@ class BookDetailsViewController: UIViewController {
             onSeeAuthorView.isHidden = true
         }
         
-        //        // FIXME add button to see author for books
-        ////        if (type == SearchEnum.author) {
-        ////            addBookToFavoritesButton.isHidden = true
-        ////        }
-        ///
         // FIXME description does not fill space + does not scroll
         if let bookTrama = book.trama {
             debugPrint("Book DOES have trama")
