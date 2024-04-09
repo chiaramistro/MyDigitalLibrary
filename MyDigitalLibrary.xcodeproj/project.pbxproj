@@ -113,6 +113,37 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		E9A80B202BC56F3B00B33754 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E9C466872BBBEC4400D0833A /* BooksTabViewController.swift */,
+				E96FE2D02BBC3A0400082221 /* BooksTabViewController+TableViewController.swift */,
+				E96FE2D22BBC409C00082221 /* AuthorsCollectionViewController.swift */,
+				E9A4606F2BBEF21A00088C63 /* AuthorsCollectionViewController+CollectionViewController.swift */,
+				E9A4606D2BBEF07400088C63 /* AuthorCollectionViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E9A80B212BC56F5700B33754 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E96FE2D42BBC446C00082221 /* SearchViewController.swift */,
+				E9A460652BBEBECB00088C63 /* SearchViewController+SearchBarDelegate.swift */,
+				E9A460672BBEBF1B00088C63 /* SearchViewController+TableViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		E9A80B222BC56F6700B33754 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				E91507ED2BC00F3B0092BB5C /* AuthorDetailsViewController.swift */,
+				E9FF66472BBFEAD100E0BDF9 /* BookDetailsViewController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		E9C466772BBBEC4400D0833A = {
 			isa = PBXGroup;
 			children = (
@@ -155,16 +186,9 @@
 		E9C4669B2BBBEC7900D0833A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E9C466872BBBEC4400D0833A /* BooksTabViewController.swift */,
-				E96FE2D02BBC3A0400082221 /* BooksTabViewController+TableViewController.swift */,
-				E96FE2D22BBC409C00082221 /* AuthorsCollectionViewController.swift */,
-				E9A4606F2BBEF21A00088C63 /* AuthorsCollectionViewController+CollectionViewController.swift */,
-				E9A4606D2BBEF07400088C63 /* AuthorCollectionViewCell.swift */,
-				E96FE2D42BBC446C00082221 /* SearchViewController.swift */,
-				E9A460652BBEBECB00088C63 /* SearchViewController+SearchBarDelegate.swift */,
-				E9A460672BBEBF1B00088C63 /* SearchViewController+TableViewController.swift */,
-				E9FF66472BBFEAD100E0BDF9 /* BookDetailsViewController.swift */,
-				E91507ED2BC00F3B0092BB5C /* AuthorDetailsViewController.swift */,
+				E9A80B222BC56F6700B33754 /* Details */,
+				E9A80B212BC56F5700B33754 /* Search */,
+				E9A80B202BC56F3B00B33754 /* Home */,
 				E9B8BF872BC435FE006DE10C /* ViewControllerUtility.swift */,
 			);
 			path = Controllers;
