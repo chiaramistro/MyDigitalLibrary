@@ -33,9 +33,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchAuthors(searchText: String) {
-        print("searchAuthors()")
         currentSearchTask = OpenLibraryClient.searchAuthor(authorName: searchText) { result, error in
-            print("searchAuthor() returned")
             if let error = error {
                 self.handleSearchError(error: error, errorMessage: "Some error occurred while searching for authors, please try again")
                 return
@@ -55,9 +53,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBooks(searchText: String) {
-        print("searchBook()")
         currentSearchTask = OpenLibraryClient.searchBook(bookTitle: searchText) { result, error in
-            print("searchBook() returned")
             if let error = error {
                 self.handleSearchError(error: error, errorMessage: "Some error occurred while searching for books, please try again")
                 return

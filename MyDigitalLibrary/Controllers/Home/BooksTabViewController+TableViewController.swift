@@ -31,18 +31,15 @@ extension BooksTabViewController {
         let book = fetchedResultsController.object(at: indexPath)
         bookDetailsController.book = book
         bookDetailsController.onRemoveBook = { [weak self] in
-            print("onRemoveBook()")
             self?.deleteBook(itemToDelete: book)
             self?.navigationController?.popToRootViewController(animated: true)
         }
         bookDetailsController.onSaveImage = { [weak self] imageData in
-            print("onSaveImage()")
             book.cover = imageData
             try? self?.dataController.viewContext.save()
             debugPrint("Book cover saved successfully")
         }
         bookDetailsController.onSaveTrama = { [weak self] trama in
-            print("onSaveTrama()")
             book.trama = trama
             try? self?.dataController.viewContext.save()
             debugPrint("Book trama saved successfully")
@@ -65,7 +62,6 @@ extension BooksTabViewController {
                 try? self.dataController.viewContext.save()
             }
             return { [weak self] in
-                debugPrint("onSeeAuthor()")
                 self?.navigateToAuthor(book: book)
             }
         }
@@ -85,10 +81,10 @@ extension BooksTabViewController {
         do {
             let result: [Author] = try self.dataController.viewContext.fetch(fetchRequest)
             if (result.isEmpty) { // no matching object
-                print("Author is NOT favourite")
+                debugPrint("Author is NOT favourite")
                 return nil
             } else { // at least one matching object exists
-                print("Author is favourite")
+                debugPrint("Author is favourite")
                 return result.first
             }
         } catch let error as NSError {
@@ -98,7 +94,7 @@ extension BooksTabViewController {
     }
     
     func deleteBook(itemToDelete: Book) {
-        print("Remove book from favourites")
+        debugPrint("Remove book from favourites")
         dataController.viewContext.delete(itemToDelete)
         try? dataController.viewContext.save()
         self.showToast(message: "Book removed from favourites successfully")
@@ -115,13 +111,11 @@ extension BooksTabViewController {
             self?.navigationController?.popToRootViewController(animated: true)
         }
         authorDetailsController.onSavePhoto = { [weak self] imageData in
-            print("onSavePhoto()")
             book.authorData?.photo = imageData
             try? self?.dataController.viewContext.save()
             debugPrint("Author photo saved successfully")
         }
         authorDetailsController.onSaveBio = { [weak self] bio in
-            print("onSaveBio()")
             book.authorData?.bio = bio
             try? self?.dataController.viewContext.save()
             debugPrint("Author bio saved successfully")
@@ -130,7 +124,7 @@ extension BooksTabViewController {
     }
 
     func deleteAuthor(itemToDelete: Author) {
-        print("Remove author from favourites")
+        debugPrint("Remove author from favourites")
         dataController.viewContext.delete(itemToDelete)
         try? dataController.viewContext.save()
         self.showToast(message: "Author removed from favourites successfully")

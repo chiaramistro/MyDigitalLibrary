@@ -11,7 +11,6 @@ import CoreData
 extension SearchViewController {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("tableView numberOfRowsInSection: \(searchResults.count)")
         return searchResults.count
     }
     
@@ -30,12 +29,12 @@ extension SearchViewController {
         let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
             switch (self.type!) {
             case SearchEnum.book:
-                print("Add book to favourites")
+                debugPrint("Add book to favourites")
                 self.alertAuthor { includeAuthor in
                     self.addBook(includeAuthor: includeAuthor, indexPath: indexPath)
                 }
             case SearchEnum.author:
-                print("Add author to favourites")
+                debugPrint("Add author to favourites")
                 let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
                 let authorFound = self.checkExistingAuthor(authorKey: selectedResult.descriptionKey )
                 if let authorFound = authorFound {
@@ -114,10 +113,10 @@ extension SearchViewController {
         do {
             let result: [Author] = try self.dataController.viewContext.fetch(fetchRequest)
             if (result.isEmpty) { // no matching object
-                print("Author is NOT already present")
+                debugPrint("Author is NOT already present")
                 return nil
             } else { // at least one matching object exists
-                print("Author is already present")
+                debugPrint("Author is already present")
                 return result.first
             }
         } catch let error as NSError {
@@ -138,10 +137,10 @@ extension SearchViewController {
         do {
             let result: [Book] = try self.dataController.viewContext.fetch(fetchRequest)
             if (result.isEmpty) { // no matching object
-                print("Book is NOT already present")
+                debugPrint("Book is NOT already present")
                 return nil
             } else { // at least one matching object exists
-                print("Book is already present")
+                debugPrint("Book is already present")
                 return result.first
             }
         } catch let error as NSError {

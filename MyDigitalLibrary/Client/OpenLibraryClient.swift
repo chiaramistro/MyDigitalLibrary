@@ -57,7 +57,7 @@ class OpenLibraryClient {
     }
         
     class func getCoverImage(id: String, type: SearchEnum, completion: @escaping (Data?, Error?) -> Void) {
-        print("Get image URL: \(Endpoints.cover(id, type).url)")
+        debugPrint("Get image URL: \(Endpoints.cover(id, type).url)")
         let download = URLSession.shared.dataTask(with: Endpoints.cover(id, type).url) { data, response, error in
              if let data = data {
                  if data.count > Endpoints.emptyImageBytes {
@@ -103,17 +103,15 @@ class OpenLibraryClient {
     // MARK: - Generic GET request method
 
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
-        print("taskForGETRequest URL \(url)")
+        debugPrint("Request URL \(url)")
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
-                print("Data not valid")
+                debugPrint("Data not valid")
                 DispatchQueue.main.async {
                     completion(nil, error)
                 }
                 return
             }
-            //let json = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-            //print(json)
             let decoder = JSONDecoder()
             do {
                 let response = try decoder.decode(responseType, from: data)
@@ -121,7 +119,7 @@ class OpenLibraryClient {
                     completion(response, nil)
                 }
             } catch {
-                print("Parsing not valid")
+                debugPrint("Parsing not valid")
                 DispatchQueue.main.async {
                     completion(nil, error)
                 }

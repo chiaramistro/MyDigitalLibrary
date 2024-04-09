@@ -29,8 +29,6 @@ class BookDetailsViewController: UIViewController {
     var selectedImage = UIImage(systemName: "heart.fill")
     
     override func viewDidLoad() {
-        print("BookDetailsViewController viewDidLoad()")
-        
         navigationItem.title = book.title
         let heartImage = isFavorite ? selectedImage : deselectedImage
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: heartImage, style: .plain, target: self, action: #selector(toggleBookFavorites))
@@ -98,7 +96,6 @@ class BookDetailsViewController: UIViewController {
                 }
                 
                 if let image = image {
-                    debugPrint("getBookCoverImage() success \(image)")
                     self.imageView.image = UIImage(data: image)
                     self.onSaveImage?(image)
                 } else {
@@ -124,14 +121,12 @@ class BookDetailsViewController: UIViewController {
     }
     
     @objc func toggleBookFavorites() {
-        print("toggleBookFavorites()")
         isFavorite = !isFavorite
         toggleHeartButton(navigationItem.rightBarButtonItem, enabled: isFavorite)
         onRemoveBook?()
     }
     
     @IBAction func onSeeAuthorTap(_ sender: Any) {
-        print("onSeeAuthorTap()")
         onSeeAuthor?()
     }
     

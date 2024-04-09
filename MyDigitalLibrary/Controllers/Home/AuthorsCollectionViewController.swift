@@ -18,10 +18,6 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
     var fetchedResultsController: NSFetchedResultsController<Author>!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("AuthorsCollectionViewController viewDidLoad()")
-        
         emptyAuthorsLabel.isHidden = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addAuthor))
@@ -36,7 +32,6 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("AuthorsCollectionViewController viewDidAppear()")
         setupFetchedResultsController()
         checkEmptyState()
         collectionView.reloadData()
@@ -66,7 +61,6 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
     }
     
     @objc func addAuthor() {
-        print("addAuthor()")
         let searchController = self.storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         searchController.type = SearchEnum.author
         searchController.dataController = dataController

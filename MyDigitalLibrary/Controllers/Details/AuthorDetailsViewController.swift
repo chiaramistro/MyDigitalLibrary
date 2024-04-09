@@ -26,8 +26,6 @@ class AuthorDetailsViewController: UIViewController {
     var selectedImage = UIImage(systemName: "heart.fill")
 
     override func viewDidLoad() {
-        print("AuthorDetailsViewController viewDidLoad()")
-
         navigationItem.title = author.name
         
         if (showFavourite) {
@@ -57,7 +55,6 @@ class AuthorDetailsViewController: UIViewController {
                 }
                 
                 if let result = result {
-                    debugPrint("getAuthorDetails() success \(result)")
                     self.bioActivityIndicator.stopAnimating()
                     self.authorBioLabel.text = result.displayBio() ?? "No description available"
                     self.onSaveBio?(result.displayBio())
@@ -90,7 +87,6 @@ class AuthorDetailsViewController: UIViewController {
                 }
                 
                 if let image = image {
-                    debugPrint("getCoverImage() success \(image)")
                     self.imageView.image = UIImage(data: image)
                     self.onSavePhoto?(image)
                 } else {
@@ -118,7 +114,6 @@ class AuthorDetailsViewController: UIViewController {
     }
 
     @objc func toggleAuthorFavorite() {
-        print("toggleAuthorFavorite()")
         isFavorite = !isFavorite
         toggleHeartButton(navigationItem.rightBarButtonItem, enabled: isFavorite)
         onRemoveAuthor?()

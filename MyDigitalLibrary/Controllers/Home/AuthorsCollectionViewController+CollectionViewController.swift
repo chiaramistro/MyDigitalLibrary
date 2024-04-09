@@ -27,7 +27,6 @@ extension AuthorsCollectionViewController {
             // Try to fetch author photo
             cell.imageView.image = UIImage(named: "image-placeholder")
             OpenLibraryClient.getCoverImage(id: author.photoKey ?? "", type: SearchEnum.author) { image, error in
-                print("getCoverImage() returned")
                 if let error = error {
                     debugPrint("Error in getCoverImage() \(error.localizedDescription)")
                     cell.imageView.image =  UIImage(named: "image-placeholder")
@@ -35,7 +34,6 @@ extension AuthorsCollectionViewController {
                 }
                 
                 if let image = image {
-                    print("getCoverImage() success \(image)")
                     cell.imageView.image = UIImage(data: image)
                     author.photo = image
                     try? self.dataController.viewContext.save()
@@ -51,23 +49,19 @@ extension AuthorsCollectionViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("collectionView select() \(indexPath)")
         let authorDetailsController = self.storyboard!.instantiateViewController(withIdentifier: "AuthorDetailsViewController") as! AuthorDetailsViewController
         let author = fetchedResultsController.object(at: indexPath)
         authorDetailsController.author = author
         authorDetailsController.onRemoveAuthor = { [weak self] in
-            print("onRemoveAuthor()")
             self?.deleteAuthor(itemToDelete: author)
             self?.navigationController?.popToRootViewController(animated: true)
         }
         authorDetailsController.onSavePhoto = { [weak self] imageData in
-            print("onSavePhoto()")
             author.photo = imageData
             try? self?.dataController.viewContext.save()
             debugPrint("Author photo saved successfully")
         }
         authorDetailsController.onSaveBio = { [weak self] bio in
-            print("onSaveBio()")
             author.bio = bio
             try? self?.dataController.viewContext.save()
             debugPrint("Author bio saved successfully")
@@ -76,7 +70,7 @@ extension AuthorsCollectionViewController {
     }
     
     func deleteAuthor(itemToDelete: Author) {
-        print("Remove author from favourites")
+        debugPrint("Remove author from favourites")
         dataController.viewContext.delete(itemToDelete)
         try? dataController.viewContext.save()
         self.showToast(message: "Author removed from favourites successfully")

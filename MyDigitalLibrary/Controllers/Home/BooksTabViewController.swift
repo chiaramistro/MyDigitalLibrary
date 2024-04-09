@@ -19,10 +19,6 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
     var fetchedResultsController: NSFetchedResultsController<Book>!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("BooksTabViewController viewDidLoad()")
-        
         emptyBooksLabel.isHidden = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBook))
@@ -44,7 +40,6 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("BooksTabViewController viewDidAppear()")
         setupFetchedResultsController()
         checkEmptyState()
         tableView.reloadData()
@@ -66,7 +61,6 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @objc func addBook() {
-        print("addBook()")
         let searchController = self.storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         searchController.type = SearchEnum.book
         searchController.dataController = dataController

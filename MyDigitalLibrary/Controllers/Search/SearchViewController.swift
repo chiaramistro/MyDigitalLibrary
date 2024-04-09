@@ -24,9 +24,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var dataController: DataController!
     
     override func viewDidLoad() {
-        print("SearchViewController viewDidLoad()")
-        print("SearchViewController viewDidLoad() type \(type)")
-        
         emptyResultsLabel.isHidden = true
         
         navigationItem.title = "Search"
@@ -36,7 +33,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func setLoading(isLoading: Bool) {
-        print("setLoading(\(isLoading))")
         emptyResultsLabel.isHidden = true
         isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
