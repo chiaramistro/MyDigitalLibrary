@@ -38,6 +38,11 @@ class AuthorDetailsViewController: UIViewController {
         bioActivityIndicator.startAnimating()
 
         // FIXME description does not fill space + does not scroll
+        getAuthorBio()
+        getAuthorPhoto()
+    }
+    
+    func getAuthorBio() {
         if let authorBio = author.bio {
             debugPrint("Author DOES have bio")
             bioActivityIndicator.stopAnimating()
@@ -66,8 +71,6 @@ class AuthorDetailsViewController: UIViewController {
                 }
             }
         }
-
-        getAuthorPhoto()
     }
     
     func getAuthorPhoto() {

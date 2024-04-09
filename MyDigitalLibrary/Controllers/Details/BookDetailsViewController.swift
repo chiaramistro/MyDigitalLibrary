@@ -46,6 +46,11 @@ class BookDetailsViewController: UIViewController {
         }
         
         // FIXME description does not fill space + does not scroll
+        getBookTrama()
+        getBookCover()
+    }
+    
+    func getBookTrama() {
         if let bookTrama = book.trama {
             debugPrint("Book DOES have trama")
             descriptionActivityIndicator.stopAnimating()
@@ -74,8 +79,6 @@ class BookDetailsViewController: UIViewController {
                 
             }
         }
-        
-        getBookCover()
     }
     
     func getBookCover() {
