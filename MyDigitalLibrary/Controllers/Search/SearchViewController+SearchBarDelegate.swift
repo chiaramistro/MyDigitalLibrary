@@ -19,7 +19,6 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         
-        // FIXME loading not shown
         setLoading(isLoading: true)
         switch type {
         case .book:
@@ -46,12 +45,7 @@ extension SearchViewController: UISearchBarDelegate {
                 self.searchResults.append(SearchResult(title: author.name, description: author.name, imageKey: author.key, descriptionKey: author.key, bookAuthorKey: nil, bookAuthorName: nil))
             }
             
-            DispatchQueue.main.async {
-                self.setLoading(isLoading: false)
-                print("reloading data start...")
-                self.tableView.reloadData()
-                print("reloading data end...")
-            }
+            self.reloadSearchResults()
         }
     }
     
@@ -60,7 +54,6 @@ extension SearchViewController: UISearchBarDelegate {
         currentSearchTask = OpenLibraryClient.searchBook(bookTitle: searchText) { result, error in
             // FIXME error handling
             
-            //print("searchBook() result: \(result)")
             print("searchBook() success")
             if (result.isEmpty) {
                 // FIXME show empty state
@@ -71,13 +64,13 @@ extension SearchViewController: UISearchBarDelegate {
                 self.searchResults.append(SearchResult(title: book.title, description: book.title, imageKey: (book.coverEditionKey ?? book.editionKey?[0]) ?? "", descriptionKey: book.key, bookAuthorKey: book.authorKey?[0] ?? nil, bookAuthorName: book.authorName?[0] ?? nil))
             }
             
-            DispatchQueue.main.async {
-                self.setLoading(isLoading: false)
-                print("reloading data start...")
-                self.tableView.reloadData()
-                print("reloading data end...")
-            }
+            self.reloadSearchResults()
         }
+    }
+    
+    func reloadSearchResults() {
+        self.setLoading(isLoading: false)
+        self.tableView.reloadData()
     }
     
 }
