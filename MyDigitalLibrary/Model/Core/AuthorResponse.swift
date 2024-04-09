@@ -10,18 +10,19 @@ import Foundation
 // MARK: - AuthorResponse
 struct AuthorResponse: Codable {
     let name, title: String?
+    let key: String?
     let links: [AuthorLink]?
-    let bio: String?
-    let type: AuthorTypeKey?
+    let bio: TypeKeyEnum?
+    let type: TypeKey?
     let alternateNames: [String]?
     let photos: [Int]?
     let wikipedia: String?
     let personalName, entityType, birthDate: String?
     let sourceRecords: [String]?
-    let key, fullerName: String?
+    let fullerName: String?
     let remoteIDS: AuthorRemoteIDS?
     let latestRevision, revision: Int?
-    let created, lastModified: AuthorTypeKey?
+    let created, lastModified: TypeKey?
 
     enum CodingKeys: String, CodingKey {
         case name, title, links, bio, type
@@ -40,17 +41,26 @@ struct AuthorResponse: Codable {
     }
 }
 
-// MARK: - AuthorTypeKey
-struct AuthorTypeKey: Codable {
-    let key: String?
-    let type, value: String?
+extension AuthorResponse {
+    func displayBio() -> String {
+        guard let bio = bio else {
+            return "Bio not available"
+        }
+        
+        switch bio {
+        case .string(let string):
+            return string
+        case .typeKey(let typeKey):
+            return typeKey.value ?? "-"
+        }
+    }
 }
 
 // MARK: - Link
 struct AuthorLink: Codable {
     let title: String?
     let url: String?
-    let type: AuthorTypeKey?
+    let type: TypeKey?
 }
 
 // MARK: - AuthorRemoteIDS

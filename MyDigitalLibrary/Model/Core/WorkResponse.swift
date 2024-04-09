@@ -12,17 +12,17 @@ struct WorkResponse: Codable {
     let key: String?
     let title: String?
     let authors: [WorkAuthor]?
-    let type: WorkTypeKey?
+    let type: TypeKey?
     let subjects: [String]?
     let covers: [Int]?
-    let firstSentence: WorkTypeKey?
+    let firstSentence: TypeKey?
     let firstPublishDate: String?
     let excerpts: [WorkExcerpt]?
-    let description: WorkTypeKey?
+    let description: TypeKeyEnum?
     let subjectPlaces, subjectPeople: [String]?
     let location: String?
     let latestRevision, revision: Int?
-    let created, lastModified: WorkTypeKey?
+    let created, lastModified: TypeKey?
 
     enum CodingKeys: String, CodingKey {
         case title, key, authors, type, subjects, covers
@@ -38,16 +38,25 @@ struct WorkResponse: Codable {
     }
 }
 
-// MARK: - WorkAuthor
-struct WorkAuthor: Codable {
-    let type: WorkTypeKey?
-    let author: WorkTypeKey?
+extension WorkResponse {
+    func displayTrama() -> String {
+        guard let description = description else {
+            return "Trama not available"
+        }
+        
+        switch description {
+        case .string(let string):
+            return string
+        case .typeKey(let typeKey):
+            return typeKey.value ?? "-"
+        }
+    }
 }
 
-// MARK: - WorkTypeKey
-struct WorkTypeKey: Codable {
-    let key: String?
-    let value: String?
+// MARK: - WorkAuthor
+struct WorkAuthor: Codable {
+    let type: TypeKey?
+    let author: TypeKey?
 }
 
 // MARK: - WorkExcerpt

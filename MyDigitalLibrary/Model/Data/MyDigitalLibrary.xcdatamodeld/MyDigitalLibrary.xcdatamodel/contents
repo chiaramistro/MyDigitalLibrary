@@ -6,14 +6,15 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="photo" optional="YES" attributeType="Binary"/>
         <attribute name="photoKey" optional="YES" attributeType="String"/>
-        <relationship name="books" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="author" inverseEntity="Book"/>
+        <relationship name="books" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="authorData" inverseEntity="Book"/>
     </entity>
     <entity name="Book" representedClassName="Book" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="cover" optional="YES" attributeType="Binary"/>
         <attribute name="coverKey" optional="YES" attributeType="String"/>
         <attribute name="key" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="trama" optional="YES" attributeType="String"/>
-        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author"/>
+        <relationship name="authorData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author"/>
     </entity>
 </model>
