@@ -257,28 +257,49 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tzK-Cl-2M0">
                                 <rect key="frame" x="186.66666666666666" y="411" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fp-PC-kLM">
-                                <rect key="frame" x="143" y="447.33333333333331" width="107" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="See author"/>
-                                <connections>
-                                    <action selector="onSeeAuthorTap:" destination="5cN-yJ-7i3" eventType="touchUpInside" id="t2G-ee-WAF"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YbM-1V-zYF">
+                                <rect key="frame" x="8" y="447.33333333333331" width="377" height="97.333333333333314"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since this author is one of your favourites, visit the author's page for more information!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NU-vE-Z8j">
+                                        <rect key="frame" x="0.0" y="0.0" width="377" height="40.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fp-PC-kLM">
+                                        <rect key="frame" x="0.0" y="56.666666666666686" width="377" height="40.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="See author"/>
+                                        <connections>
+                                            <action selector="onSeeAuthorTap:" destination="5cN-yJ-7i3" eventType="touchUpInside" id="t2G-ee-WAF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6fp-PC-kLM" firstAttribute="centerX" secondItem="YbM-1V-zYF" secondAttribute="centerX" id="1LL-WH-afY"/>
+                                    <constraint firstItem="6fp-PC-kLM" firstAttribute="top" secondItem="5NU-vE-Z8j" secondAttribute="bottom" constant="16" id="6IW-ph-MfZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="6fp-PC-kLM" secondAttribute="trailing" id="JHc-is-4bY"/>
+                                    <constraint firstItem="6fp-PC-kLM" firstAttribute="leading" secondItem="YbM-1V-zYF" secondAttribute="leading" id="XE4-x7-bPl"/>
+                                    <constraint firstItem="5NU-vE-Z8j" firstAttribute="top" secondItem="YbM-1V-zYF" secondAttribute="top" id="iyv-z9-qsg"/>
+                                    <constraint firstItem="5NU-vE-Z8j" firstAttribute="leading" secondItem="YbM-1V-zYF" secondAttribute="leading" id="n3i-Ex-vDD"/>
+                                    <constraint firstAttribute="trailing" secondItem="5NU-vE-Z8j" secondAttribute="trailing" id="wkb-7O-T77"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eHa-PC-MyA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="YbM-1V-zYF" secondAttribute="trailing" constant="8" id="0by-QL-th2"/>
                             <constraint firstAttribute="trailing" secondItem="nq3-0p-8yz" secondAttribute="trailing" constant="8" id="0ov-El-TrR"/>
                             <constraint firstItem="tzK-Cl-2M0" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="8Zy-5G-M1X"/>
+                            <constraint firstItem="YbM-1V-zYF" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="ADv-dG-wlV"/>
                             <constraint firstItem="Efr-IK-1Aa" firstAttribute="top" secondItem="eHa-PC-MyA" secondAttribute="top" id="Ho0-np-j8R"/>
                             <constraint firstItem="tzK-Cl-2M0" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="8" id="N8w-eK-2eu"/>
                             <constraint firstItem="nq3-0p-8yz" firstAttribute="top" secondItem="Efr-IK-1Aa" secondAttribute="bottom" constant="8" id="P6L-g5-Ixe"/>
                             <constraint firstItem="eHa-PC-MyA" firstAttribute="trailing" secondItem="Efr-IK-1Aa" secondAttribute="trailing" constant="8" id="XGP-WG-AWw"/>
-                            <constraint firstItem="6fp-PC-kLM" firstAttribute="centerX" secondItem="U2n-yl-9LJ" secondAttribute="centerX" id="jYf-ey-2Yg"/>
                             <constraint firstItem="nq3-0p-8yz" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="mcp-7V-dOb"/>
+                            <constraint firstItem="YbM-1V-zYF" firstAttribute="top" secondItem="nq3-0p-8yz" secondAttribute="bottom" constant="16" id="nOu-fI-BBv"/>
                             <constraint firstItem="Efr-IK-1Aa" firstAttribute="leading" secondItem="eHa-PC-MyA" secondAttribute="leading" constant="8" id="qr8-bs-2zJ"/>
-                            <constraint firstItem="6fp-PC-kLM" firstAttribute="top" secondItem="nq3-0p-8yz" secondAttribute="bottom" constant="16" id="szF-5S-BD9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zDV-ZY-jQc"/>
@@ -286,7 +307,7 @@
                         <outlet property="descriptionActivityIndicator" destination="tzK-Cl-2M0" id="CKH-y9-HKg"/>
                         <outlet property="descriptionLabel" destination="nq3-0p-8yz" id="iao-kf-viZ"/>
                         <outlet property="imageView" destination="Efr-IK-1Aa" id="XjL-v6-St1"/>
-                        <outlet property="onSeeAuthorButton" destination="6fp-PC-kLM" id="uof-nK-63l"/>
+                        <outlet property="onSeeAuthorView" destination="YbM-1V-zYF" id="eWe-ZW-HsM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uq1-5p-UhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -58,6 +58,13 @@ extension BooksTabViewController {
         let isAuthorFavourite = self.isAuthorFavourite(authorName: book.author ?? "")
         if let favouriteAuthor = isAuthorFavourite {
             debugPrint("Author is one of the favourites")
+            if let authorData = book.authorData {
+                debugPrint("Author data is defined for book")
+            } else {
+                debugPrint("Author data is NOT defined for book")
+                book.authorData = favouriteAuthor
+                try? self.dataController.viewContext.save()
+            }
             return { [weak self] in
                 debugPrint("onSeeAuthor()")
                 self?.navigateToAuthor(book: book)
