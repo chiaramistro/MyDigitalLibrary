@@ -61,7 +61,7 @@ class AuthorDetailsViewController: UIViewController {
                     self.authorBioLabel.text = result.displayBio()
                     self.onSaveBio?(result.displayBio())
                 } else {
-                    debugPrint("Error getting author details: \(error?.localizedDescription)")
+                    debugPrint("Error getting author details: \(String(describing: error?.localizedDescription))")
                     self.handleAuthorBioError()
                 }
             }
@@ -92,7 +92,7 @@ class AuthorDetailsViewController: UIViewController {
                     self.imageView.image = UIImage(data: image)
                     self.onSavePhoto?(image)
                 } else {
-                    debugPrint("Error getting author photo: \(error?.localizedDescription)")
+                    debugPrint("Error getting author photo: \(String(describing: error?.localizedDescription))")
                     self.handleAuthorPhotoError()
                 }
             }

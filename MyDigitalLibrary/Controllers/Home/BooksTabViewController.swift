@@ -58,7 +58,6 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
             try fetchedResultsController.performFetch()
         } catch {
             fatalError("The fetch of books could not be performed: \(error.localizedDescription)")
-            self.showErrorAlert(message: "An error occurred retrieving your favourite books, try again later")
         }
     }
     

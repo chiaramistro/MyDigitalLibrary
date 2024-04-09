@@ -41,7 +41,7 @@ extension AuthorsCollectionViewController {
                     try? self.dataController.viewContext.save()
                     debugPrint("Author photo saved successfully")
                 } else {
-                    debugPrint("Error no author's photo available: \(error?.localizedDescription)")
+                    debugPrint("Error no author's photo available: \(String(describing: error?.localizedDescription))")
                     cell.imageView.image =  UIImage(named: "image-placeholder")
                 }
             }

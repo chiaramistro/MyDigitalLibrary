@@ -58,7 +58,7 @@ extension BooksTabViewController {
         let isAuthorFavourite = self.isAuthorFavourite(authorName: book.author ?? "")
         if let favouriteAuthor = isAuthorFavourite {
             debugPrint("Author is one of the favourites")
-            if let authorData = book.authorData {
+            if let _ = book.authorData {
                 debugPrint("Author data is defined for book")
             } else {
                 debugPrint("Author data is NOT defined for book")

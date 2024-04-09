@@ -36,7 +36,7 @@ class BookDetailsViewController: UIViewController {
         descriptionActivityIndicator.startAnimating()
         
         onSeeAuthorView.isHidden = true
-        if let canSeeAuthor = onSeeAuthor {
+        if let _ = onSeeAuthor {
             debugPrint("Book DOES have favourited author")
             onSeeAuthorView.isHidden = false
         } else {
@@ -69,7 +69,7 @@ class BookDetailsViewController: UIViewController {
                     self.descriptionLabel.text = result.displayTrama()
                     self.onSaveTrama?(result.displayTrama())
                 } else {
-                    debugPrint("Error getting book details: \(error?.localizedDescription)")
+                    debugPrint("Error getting book details: \(String(describing: error?.localizedDescription))")
                     self.handleBookTramaError()
                 }
                 
@@ -101,7 +101,7 @@ class BookDetailsViewController: UIViewController {
                     self.imageView.image = UIImage(data: image)
                     self.onSaveImage?(image)
                 } else {
-                    debugPrint("Error getting book cover: \(error?.localizedDescription)")
+                    debugPrint("Error getting book cover: \(String(describing: error?.localizedDescription))")
                     self.handleBookCoverError()
                 }
             }

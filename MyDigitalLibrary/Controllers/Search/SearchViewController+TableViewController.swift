@@ -39,7 +39,7 @@ extension SearchViewController {
                 debugPrint("Add author to favourites")
                 let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
                 let authorFound = self.checkExistingAuthor(authorKey: selectedResult.descriptionKey )
-                if let authorFound = authorFound {
+                if let _ = authorFound {
                     debugPrint("Author already present in favourite list")
                     self.showToast(message: "Author already present in favourite list")
                 } else {
@@ -79,7 +79,7 @@ extension SearchViewController {
     func addBook(includeAuthor: Bool, indexPath: IndexPath) {
         let selectedResult = self.searchResults[(indexPath as NSIndexPath).row]
         let bookFound = self.checkExistingBook(bookKey: selectedResult.descriptionKey)
-        if let bookFound = bookFound {
+        if let _ = bookFound {
             debugPrint("Book already present in favourite list")
             self.showToast(message: "Book already present in favourite list")
         } else {
