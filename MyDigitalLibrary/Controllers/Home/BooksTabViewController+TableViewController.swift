@@ -33,7 +33,7 @@ extension BooksTabViewController {
         bookDetailsController.onRemoveBook = { [weak self] in
             print("onRemoveBook()")
             self?.deleteBook(itemToDelete: book)
-            self?.navigationController?.popViewController(animated: true)
+            self?.navigationController?.popToRootViewController(animated: true)
         }
         bookDetailsController.onSaveImage = { [weak self] imageData in
             print("onSaveImage()")
@@ -112,7 +112,7 @@ extension BooksTabViewController {
         authorDetailsController.onRemoveAuthor = { [weak self] in
             print("onRemoveAuthor()")
             self?.deleteAuthor(itemToDelete: book.authorData!)
-            self?.navigationController?.popViewController(animated: true)
+            self?.navigationController?.popToRootViewController(animated: true)
         }
         authorDetailsController.onSavePhoto = { [weak self] imageData in
             print("onSavePhoto()")

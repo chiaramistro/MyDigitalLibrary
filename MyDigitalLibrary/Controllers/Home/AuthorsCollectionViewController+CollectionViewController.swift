@@ -52,7 +52,7 @@ extension AuthorsCollectionViewController {
         authorDetailsController.onRemoveAuthor = { [weak self] in
             print("onRemoveAuthor()")
             self?.deleteAuthor(itemToDelete: author)
-            self?.navigationController?.popViewController(animated: true)
+            self?.navigationController?.popToRootViewController(animated: true)
         }
         authorDetailsController.onSavePhoto = { [weak self] imageData in
             print("onSavePhoto()")
