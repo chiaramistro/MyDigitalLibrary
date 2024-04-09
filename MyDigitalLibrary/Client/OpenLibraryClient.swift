@@ -12,9 +12,7 @@ class OpenLibraryClient {
     enum Endpoints {
         static let base = "https://openlibrary.org"
         static let emptyImageBytes = 43
-        
-        // FIXME with dots on url it breaks, handle with %%
-        
+
         case searchBook(String)
         case searchAuthor(String)
         case cover(String, SearchEnum)
@@ -23,8 +21,8 @@ class OpenLibraryClient {
         
         var stringValue: String {
             switch self {
-                case .searchBook(let title): return Endpoints.base + "/search.json" + "?q=\(title)"
-                case .searchAuthor(let name): return Endpoints.base + "/search/authors.json" + "?q=\(name)"
+                case .searchBook(let title): return Endpoints.base + "/search.json" + "?q=\(title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
+                case .searchAuthor(let name): return Endpoints.base + "/search/authors.json" + "?q=\(name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
                 case .cover(let id, let type): return "https://covers.openlibrary.org/\(type.rawValue)/olid/\(id)-M.jpg"
                 case .works(let workId): return Endpoints.base + "\(workId).json"
                 case .authorDetails(let authorId): return Endpoints.base + "/authors/\(authorId).json"
@@ -81,8 +79,7 @@ class OpenLibraryClient {
      }
     
     class func searchBook(bookTitle: String, completion: @escaping ([BookResponse], Error?) -> Void) -> URLSessionDataTask  {
-        let query = bookTitle.lowercased().replacingOccurrences(of: " ", with: "+")
-        let task = taskForGETRequest(url: Endpoints.searchBook(query).url, responseType: BookSearchResponse.self) { response, error in
+        let task = taskForGETRequest(url: Endpoints.searchBook(bookTitle).url, responseType: BookSearchResponse.self) { response, error in
             if let response = response {
                 completion(response.docs, nil)
             } else {
@@ -93,8 +90,7 @@ class OpenLibraryClient {
     }
     
     class func searchAuthor(authorName: String, completion: @escaping ([AuthorBookResponse], Error?) -> Void) -> URLSessionDataTask  {
-        let query = authorName.lowercased().replacingOccurrences(of: " ", with: "+")
-        let task = taskForGETRequest(url: Endpoints.searchAuthor(query).url, responseType: AuthorSearchResponse.self) { response, error in
+        let task = taskForGETRequest(url: Endpoints.searchAuthor(authorName).url, responseType: AuthorSearchResponse.self) { response, error in
             if let response = response {
                 completion(response.docs, nil)
             } else {
