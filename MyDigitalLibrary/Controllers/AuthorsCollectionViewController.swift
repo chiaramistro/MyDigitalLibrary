@@ -12,7 +12,7 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var emptyAuthorsLabel: UILabel!
     
     var dataController: DataController!
     var fetchedResultsController: NSFetchedResultsController<Author>!
@@ -22,6 +22,8 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
         // Do any additional setup after loading the view.
         print("AuthorsCollectionViewController viewDidLoad()")
         
+        emptyAuthorsLabel.isHidden = true
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addAuthor))
         navigationItem.title = "My Digital Library"
         
@@ -30,14 +32,22 @@ class AuthorsCollectionViewController: UIViewController, UICollectionViewDelegat
         collectionView.delegate = self
         
         setupFetchedResultsController()
-        
-        // FIXME show empty state
+        checkEmptyState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("AuthorsCollectionViewController viewDidAppear()")
         setupFetchedResultsController()
+        checkEmptyState()
         collectionView.reloadData()
+    }
+    
+    func checkEmptyState() {
+        if (fetchedResultsController.fetchedObjects?.count == 0) {
+            emptyAuthorsLabel.isHidden = false
+        } else {
+            emptyAuthorsLabel.isHidden = true
+        }
     }
     
     fileprivate func setupFetchedResultsController() {

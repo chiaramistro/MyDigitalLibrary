@@ -13,7 +13,7 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var emptyBooksLabel: UILabel!
     
     var dataController: DataController!
     var fetchedResultsController: NSFetchedResultsController<Book>!
@@ -23,6 +23,8 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view.
         print("BooksTabViewController viewDidLoad()")
         
+        emptyBooksLabel.isHidden = true
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBook))
         navigationItem.title = "My Digital Library"
         
@@ -30,13 +32,21 @@ class BooksTabViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
         
         setupFetchedResultsController()
-        
-        // FIXME show empty state
+        checkEmptyState()
+    }
+    
+    func checkEmptyState() {
+        if (fetchedResultsController.fetchedObjects?.count == 0) {
+            emptyBooksLabel.isHidden = false
+        } else {
+            emptyBooksLabel.isHidden = true
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("BooksTabViewController viewDidAppear()")
         setupFetchedResultsController()
+        checkEmptyState()
         tableView.reloadData()
     }
     
