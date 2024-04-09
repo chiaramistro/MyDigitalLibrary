@@ -12,17 +12,17 @@ struct WorkResponse: Codable {
     let key: String?
     let title: String?
     let authors: [WorkAuthor]?
-    let type: WorkTypeKey?
+    let type: TypeKey?
     let subjects: [String]?
     let covers: [Int]?
-    let firstSentence: WorkTypeKey?
+    let firstSentence: TypeKey?
     let firstPublishDate: String?
     let excerpts: [WorkExcerpt]?
-    let description: TramaType?
+    let description: TypeKeyEnum?
     let subjectPlaces, subjectPeople: [String]?
     let location: String?
     let latestRevision, revision: Int?
-    let created, lastModified: WorkTypeKey?
+    let created, lastModified: TypeKey?
 
     enum CodingKeys: String, CodingKey {
         case title, key, authors, type, subjects, covers
@@ -47,50 +47,16 @@ extension WorkResponse {
         switch description {
         case .string(let string):
             return string
-        case .workTypeKey(let workTypeKey):
-            return workTypeKey.value ?? "-"
-        }
-    }
-}
-
-// MARK: - TramaType
-enum TramaType: Codable {
-    case string(String)
-    case workTypeKey(WorkTypeKey)
-    
-    init(from decoder: Decoder) throws {
-        if let string = try? String(from: decoder) {
-            self = .string(string)
-            return
-        }
-        if let workTypeKey = try? WorkTypeKey(from: decoder) {
-            self = .workTypeKey(workTypeKey)
-            return
-        }
-        throw DecodingError.dataCorruptedError(in: try decoder.unkeyedContainer(), debugDescription: "Unable to decode TramaType")
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .string(let string):
-            try container.encode(string)
-        case .workTypeKey(let workTypeKey):
-            try container.encode(workTypeKey)
+        case .typeKey(let typeKey):
+            return typeKey.value ?? "-"
         }
     }
 }
 
 // MARK: - WorkAuthor
 struct WorkAuthor: Codable {
-    let type: WorkTypeKey?
-    let author: WorkTypeKey?
-}
-
-// MARK: - WorkTypeKey
-struct WorkTypeKey: Codable {
-    let key: String?
-    let value: String?
+    let type: TypeKey?
+    let author: TypeKey?
 }
 
 // MARK: - WorkExcerpt
