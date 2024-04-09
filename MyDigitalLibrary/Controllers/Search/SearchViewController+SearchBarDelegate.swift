@@ -37,19 +37,12 @@ extension SearchViewController: UISearchBarDelegate {
         currentSearchTask = OpenLibraryClient.searchAuthor(authorName: searchText) { result, error in
             print("searchAuthor() returned")
             if let error = error {
-                if (error.localizedDescription.contains("cancelled")) {
-                    debugPrint("Author search terminated by user")
-                    return
-                }
-                debugPrint("Error in searchAuthor() \(error.localizedDescription)")
-                self.setLoading(isLoading: false)
-                self.showErrorAlert(message: "Some error occurred while searching for authors, please try again")
+                self.handleSearchError(error: error, errorMessage: "Some error occurred while searching for authors, please try again")
                 return
             }
             
             if (result.isEmpty) {
-                self.reloadSearchResults()
-                self.emptyResultsLabel.isHidden = false
+                self.displayEmptyState()
                 return
             }
             
@@ -66,19 +59,12 @@ extension SearchViewController: UISearchBarDelegate {
         currentSearchTask = OpenLibraryClient.searchBook(bookTitle: searchText) { result, error in
             print("searchBook() returned")
             if let error = error {
-                if (error.localizedDescription.contains("cancelled")) {
-                    debugPrint("Book search terminated by user")
-                    return
-                }
-                debugPrint("Error in searchBook() \(error.localizedDescription)")
-                self.setLoading(isLoading: false)
-                self.showErrorAlert(message: "Some error occurred while searching for books, please try again")
+                self.handleSearchError(error: error, errorMessage: "Some error occurred while searching for books, please try again")
                 return
             }
             
             if (result.isEmpty) {
-                self.reloadSearchResults()
-                self.emptyResultsLabel.isHidden = false
+                self.displayEmptyState()
                 return
             }
             
@@ -88,6 +74,21 @@ extension SearchViewController: UISearchBarDelegate {
             
             self.reloadSearchResults()
         }
+    }
+    
+    func displayEmptyState() {
+        self.reloadSearchResults()
+        self.emptyResultsLabel.isHidden = false
+    }
+    
+    func handleSearchError(error: Error, errorMessage: String) {
+        if (error.localizedDescription.contains("cancelled")) {
+            debugPrint("Search terminated by user")
+            return
+        }
+        self.setLoading(isLoading: false)
+        debugPrint(errorMessage)
+        self.showErrorAlert(message: errorMessage)
     }
     
     func reloadSearchResults() {
